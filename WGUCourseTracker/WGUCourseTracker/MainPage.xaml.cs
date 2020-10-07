@@ -13,6 +13,10 @@ namespace WGUCourseTracker
         public MainPage()
         {
             InitializeComponent();
+
+            var assembly = typeof(MainPage);
+
+            WGUlogo.Source = ImageSource.FromResource("WGUCourseTracker.Assets.Images.WGUlogo.png", assembly);
         }
     }
 }
