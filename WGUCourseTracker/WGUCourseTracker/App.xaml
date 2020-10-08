@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WGUCourseTracker"
              x:Class="WGUCourseTracker.App">
+    
     <Application.Resources>
         
         <ResourceDictionary>
@@ -40,6 +41,19 @@
             </Style>
             <Style TargetType="Label" x:Key="Header2">
                 <Setter Property="TextColor" Value="#11213d"/>
+            </Style>
+            <Style TargetType="Frame"
+                   x:Key="bg">
+                <Setter
+                       Property="BackgroundColor"
+                       Value="#d8e2f2"/>
+                <Setter
+                    Property="BorderColor"
+                    Value="Black"/>
+                <Setter
+                    Property="CornerRadius"
+                    Value="5"/>
+
             </Style>
         </ResourceDictionary>
     </Application.Resources>

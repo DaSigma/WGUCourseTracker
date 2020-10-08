@@ -10,7 +10,8 @@ namespace WGUCourseTracker
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new TermListPage());
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()

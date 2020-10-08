@@ -18,5 +18,20 @@ namespace WGUCourseTracker
 
             //WGUlogo.Source = ImageSource.FromResource("WGUCourseTracker.Assets.Images.WGUlogo.png", assembly);
         }
+
+        private void SaveTerm_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NewCourse_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditCourse_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

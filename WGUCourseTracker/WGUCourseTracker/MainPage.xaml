@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:WGUCourseTracker"
              x:Class="WGUCourseTracker.MainPage"
              ControlTemplate="{StaticResource Key=Template}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Course"
+                     Clicked="NewCourse_Clicked"/>
+        <ToolbarItem Text="Edit Course"
+                     Clicked="EditCourse_Clicked"/>
+        <ToolbarItem Text="Save"
+                     Clicked="SaveTerm_Clicked"/>
+    </ContentPage.ToolbarItems>
 
     <ScrollView>
     <StackLayout Padding="5, 20,5,5">
@@ -14,44 +22,51 @@
             FontSize="Title" 
             Padding="10,10,0,10" 
             FontAttributes="Bold"/>
-        <Label 
-            x:Name="termNameLabel" 
-            Text="Term Name" 
-            Padding="5,0,0,0"/>
+
         <StackLayout Orientation="Horizontal">
             <Label 
-            VerticalOptions="End"
-            x:Name="startDateLabel" 
-            Text="Start Date" 
-            Padding="20,0,0,0"/>
+                VerticalOptions="End"
+                x:Name="termNameLabel" 
+                Text="Term:" 
+                Padding="20,0,30,0"/>
+            <Entry 
+                VerticalOptions="End"
+                Placeholder="Term Name"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label 
+                VerticalOptions="End"
+                x:Name="startDateLabel" 
+                Text="Start Date:" 
+                Padding="20,0,0,0"/>
             <DatePicker VerticalOptions="End"></DatePicker>
         </StackLayout>
 
         <StackLayout Orientation="Horizontal" >
             <Label
-            VerticalOptions="End"
-            x:Name="endDateLabel" 
-            Text="Start Date" 
-            Padding="20,0,0,0"/>
+                VerticalOptions="End"
+                x:Name="endDateLabel" 
+                Text="End Date:" 
+                Padding="20,0,8,0"/>
             <DatePicker VerticalOptions="End"></DatePicker>
         </StackLayout>
-        <Button 
-            Text="Add"
-            HorizontalOptions="Center"/>
-
-        <Label Text="Terms:" Padding="0"/>
-        <Frame BorderColor="Black" CornerRadius="5"  BackgroundColor="LightGray" WidthRequest="100" HeightRequest="110">
-            <StackLayout>
-                <Label Text="Term 1" TextColor="Black"/>
-                <Label Text="Term 2" TextColor="Black"/>
-                <Label Text="Term 3" TextColor="Black"/>
-            </StackLayout>
-        </Frame>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="0,50,0,0">
-            <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="View/Edit"/>
-            <Button Text="Delete"/>
+        
+        <StackLayout>
+            <Label Text="Courses:"/>
+            <Frame  
+                Style="{StaticResource bg}"
+                WidthRequest="100" HeightRequest="150">
+                    <StackLayout>
+                        <ListView x:Name="termsListView">
+                        </ListView>
+                    </StackLayout>
+            </Frame>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,5,0,0">
+                    <Button Text="Delete"/>
+                </StackLayout>
         </StackLayout>
-    </StackLayout>
+        </StackLayout>
     </ScrollView>
 
 </ContentPage>

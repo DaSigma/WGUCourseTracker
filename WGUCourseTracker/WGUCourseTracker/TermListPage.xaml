@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGUCourseTracker.TermListPage"
+             ControlTemplate="{StaticResource Key=Template}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Term"
+                      Clicked="NewItem_Clicked"/>
+        <ToolbarItem Text="Edit Term"
+                      Clicked="EditItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="5,0,5,0">
+            <Label 
+            Style="{StaticResource Header1}"
+            Text="View Terms" 
+            FontSize="Title" 
+            Padding="10,10,0,10" 
+            FontAttributes="Bold"/>
+            <StackLayout>
+                <Label Text="Terms:"/>
+                <Frame  
+                       Style="{StaticResource bg}"
+                        WidthRequest="100" HeightRequest="350">
+                    <StackLayout>
+                        <ListView x:Name="termsListView">
+                        </ListView>
+                    </StackLayout>
+                </Frame>
+                <Button Text="Delete"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
