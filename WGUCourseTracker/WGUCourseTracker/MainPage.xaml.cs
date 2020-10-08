@@ -26,11 +26,12 @@ namespace WGUCourseTracker
 
         private void NewCourse_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new CoursePage());
         }
 
         private void EditCourse_Clicked(object sender, EventArgs e)
         {
+            Navigation.PushAsync(new CoursePage());
 
         }
     }

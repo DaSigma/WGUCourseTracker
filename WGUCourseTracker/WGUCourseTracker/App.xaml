@@ -14,9 +14,9 @@
                             x:Name="WGUlogo"
                             Margin="20,20,20,0"
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            HeightRequest="25"
-                            WidthRequest="100"/>
+                            VerticalOptions="Start"
+                            HeightRequest="50"
+                            WidthRequest="200"/>
 
                     <Label
                         FontAttributes="Bold"
