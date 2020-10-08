@@ -1,8 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WGUCourseTracker"
              x:Class="WGUCourseTracker.App">
     <Application.Resources>
-
+        
+        <ResourceDictionary>
+            <ControlTemplate x:Key="Template">
+                <StackLayout>
+                    <Frame BackgroundColor="#fff" Padding="24" CornerRadius="0" VerticalOptions="Start">
+                <Image 
+                    Source="{local:ImageResource WGUCourseTracker.Assets.Images.WGUlogo.png}"
+                    x:Name="WGUlogo"
+                    Margin="0,0,30,0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    HeightRequest="50"
+                    WidthRequest="150"/>
+                    </Frame>
+                    <ContentPresenter VerticalOptions="FillAndExpand" />
+                    <Label                          
+                        HorizontalTextAlignment="End"
+                        Text="@FCE LLC. 2020"
+                        FontSize="10"
+                        Background="#11213d"
+                        TextColor="White"
+                        VerticalOptions="End"/>
+                </StackLayout>
+            </ControlTemplate>
+            <Style 
+                TargetType="Label" 
+                x:Key="Header1">
+                <Setter 
+                    Property="TextColor" 
+                    Value="#11213d"/>
+                <Setter 
+                    Property="FontSize"
+                    Value="Title"/>
+            </Style>
+            <Style TargetType="Label" x:Key="Header2">
+                <Setter Property="TextColor" Value="#11213d"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -14,9 +14,9 @@ namespace WGUCourseTracker
         {
             InitializeComponent();
 
-            var assembly = typeof(MainPage);
+            //var assembly = typeof(MainPage);
 
-            WGUlogo.Source = ImageSource.FromResource("WGUCourseTracker.Assets.Images.WGUlogo.png", assembly);
+            //WGUlogo.Source = ImageSource.FromResource("WGUCourseTracker.Assets.Images.WGUlogo.png", assembly);
         }
     }
 }

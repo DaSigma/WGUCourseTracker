@@ -1,30 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WGUCourseTracker.MainPage">
+             xmlns:local="clr-namespace:WGUCourseTracker"
+             x:Class="WGUCourseTracker.MainPage"
+             ControlTemplate="{StaticResource Key=Template}">
 
-    <StackLayout>
-        <Frame BackgroundColor="#fff" Padding="24" CornerRadius="0">
-            <Image x:Name="WGUlogo"
+    <ScrollView>
+    <StackLayout Padding="5, 20,5,5">
 
-            
-            HeightRequest="100"
-            WidthRequest="150"
-/>
+        <Label 
+            Style="{StaticResource Header1}"
+            Text="Create Term" 
+            FontSize="Title" 
+            Padding="10,10,0,10" 
+            FontAttributes="Bold"/>
+        <Label 
+            x:Name="termNameLabel" 
+            Text="Term Name" 
+            Padding="5,0,0,0"/>
+        <StackLayout Orientation="Horizontal">
+            <Label 
+            VerticalOptions="End"
+            x:Name="startDateLabel" 
+            Text="Start Date" 
+            Padding="20,0,0,0"/>
+            <DatePicker VerticalOptions="End"></DatePicker>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" >
+            <Label
+            VerticalOptions="End"
+            x:Name="endDateLabel" 
+            Text="Start Date" 
+            Padding="20,0,0,0"/>
+            <DatePicker VerticalOptions="End"></DatePicker>
+        </StackLayout>
+        <Button 
+            Text="Add"
+            HorizontalOptions="Center"/>
+
+        <Label Text="Terms:" Padding="0"/>
+        <Frame BorderColor="Black" CornerRadius="5"  BackgroundColor="LightGray" WidthRequest="100" HeightRequest="110">
+            <StackLayout>
+                <Label Text="Term 1" TextColor="Black"/>
+                <Label Text="Term 2" TextColor="Black"/>
+                <Label Text="Term 3" TextColor="Black"/>
+            </StackLayout>
         </Frame>
-        
-        <Label Text="Create Term" FontSize="Title" Padding="30,10,30,10" FontAttributes="Bold"/>
-        <!--<Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>-->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="0,50,0,0">
+            <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="View/Edit"/>
+            <Button Text="Delete"/>
+        </StackLayout>
     </StackLayout>
+    </ScrollView>
 
 </ContentPage>
