@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGUCourseTracker.AddInstructorPage"
+             ControlTemplate="{StaticResource Key=Template}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save"
+                     Clicked="SaveInstructor_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label 
+                    Style="{StaticResource Header1}"
+                    Text="Add Instructor" 
+                    FontSize="Title" 
+                    Padding="5,0,0,0" 
+                    FontAttributes="Bold"/>
+            <Entry x:Name="InstructorName"
+                   Placeholder="Name"/>
+            <Entry x:Name="InstructorEmail"
+                   Keyboard="Email"
+                   Placeholder="instructor@email.com"/>
+            <Entry x:Name="InstructorPhone"
+                   Keyboard="Telephone"
+                   Placeholder="337-333-4444"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

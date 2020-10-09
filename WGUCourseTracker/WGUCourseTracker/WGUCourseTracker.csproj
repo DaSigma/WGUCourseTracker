@@ -26,12 +26,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AddInstructorPage.xaml.cs">
+      <DependentUpon>AddInstructorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="TermListPage.xaml.cs">
       <DependentUpon>TermListPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="AddInstructorPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="AssesmentsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="CoursePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

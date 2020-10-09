@@ -54,18 +54,16 @@
         
         <StackLayout>
             <Label Text="Courses:"/>
-            <Frame  
+                <Frame  
                 Style="{StaticResource bg}"
                 WidthRequest="100" HeightRequest="150">
                     <StackLayout>
                         <ListView x:Name="termsListView">
                         </ListView>
                     </StackLayout>
-            </Frame>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0,5,0,0">
-                    <Button Text="Delete"/>
-                </StackLayout>
-        </StackLayout>
+                </Frame>
+                <Button Text="Delete"/>
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 

@@ -6,9 +6,9 @@
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Term"
-                      Clicked="NewItem_Clicked"/>
+                      Clicked="AddTerm_Clicked"/>
         <ToolbarItem Text="Edit Term"
-                      Clicked="EditItem_Clicked"/>
+                      Clicked="EditTerm_Clicked"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>

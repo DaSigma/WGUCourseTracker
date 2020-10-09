@@ -6,10 +6,10 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Instructor"
                      Clicked="AddInstructor_Clicked"/>
-        <ToolbarItem Text="Add Assesment"
+        <ToolbarItem Text="Add Assessment"
                      Clicked="AddAssessment_Clicked"/>
         <ToolbarItem Text="Save"
-                     Clicked="SaveItem_Clicked"/>
+                     Clicked="SaveCourse_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
@@ -62,7 +62,7 @@
                         x:Name="startDateLabel" 
                         Text="Start Date:" 
                         Padding="5,0,0,0"/>
-                        <DatePicker FontSize="Micro" VerticalOptions="Center"></DatePicker>
+                        <DatePicker FontSize="Small" VerticalOptions="Center"></DatePicker>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" >
@@ -72,35 +72,47 @@
                         x:Name="endDateLabel" 
                         Text="End Date:" 
                         Padding="5,0,0,0"/>
-                        <DatePicker FontSize="Micro" VerticalOptions="Center"></DatePicker>
+                        <DatePicker FontSize="Small" VerticalOptions="Center"></DatePicker>
                     </StackLayout>
 
                 </StackLayout>
-                <StackLayout HeightRequest="100">
+                <StackLayout 
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+                    <StackLayout
+                        
+                    WidthRequest="500">
 
-                    <Label 
+                        <Label 
                         Style="{StaticResource Header2}"
                         Text="Instructor Info:"/>
-                    <Frame Style="{StaticResource bg}">
-                    <StackLayout>
-                        <ListView x:Name="termsListView">
-                        </ListView>
-                    </StackLayout>
+                    <Frame 
+                        HeightRequest="80"
+                        Style="{StaticResource bg}">
+                            <StackLayout >
+                            </StackLayout>
                     </Frame>
                 </StackLayout>
-                <StackLayout Orientation="Vertical">
+                <StackLayout 
+                   WidthRequest="500"
+                    Orientation="Vertical">
                     <Label
                         Style="{StaticResource Header2}"
                         Text="Assessments:"/>
-                    <StackLayout>
-                        <Frame Style="{StaticResource bg}">
+                        <StackLayout>
+                            <Frame 
+                                HeightRequest="80"
+                            Style="{StaticResource bg}">
                             <StackLayout>
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout 
+                                Orientation="Horizontal">
                                 <Label
                                     FontSize="Small"
-                                    Text="Performance Assessment:"/>
-                                <Label
-                                    FontSize="Small"
+                                    Text="Perf:"/>
+                                <Label 
+                                    HorizontalOptions ="EndAndExpand"
+                                    VerticalTextAlignment="Center"
+                                    FontSize="Micro"
                                     Text="PA Name"/>
                             </StackLayout>
                                 <Label
@@ -109,9 +121,10 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label
                                     FontSize="Small"
-                                    Text="Objective Assessment:"/>
+                                    Text="Obj:"/>
                                 <Label
-                                    FontSize="Small"
+                                    HorizontalOptions ="EndAndExpand"
+                                    FontSize="Micro"
                                     Text="OA Name"/>
                             </StackLayout>
                                 <Label
@@ -120,12 +133,16 @@
                             </StackLayout>
                         </Frame>
                     </StackLayout>
+                    </StackLayout>
                 </StackLayout>
                 <Label
                     Style="{StaticResource Header2}"
                     Text="Notes:"/>
-                <Editor>
-                    
+                <Editor                    
+                    HeightRequest="150"
+                    BackgroundColor="LightGray"
+                    FontSize="Small">
+                   
                 </Editor>
                 <Button Text="Delete"/>
             </StackLayout>

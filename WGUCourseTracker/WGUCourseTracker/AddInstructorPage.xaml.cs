@@ -10,22 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace WGUCourseTracker
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TermListPage : ContentPage
+    public partial class AddInstructorPage : ContentPage
     {
-        public TermListPage()
+        public AddInstructorPage()
         {
             InitializeComponent();
         }
 
-        private void AddTerm_Clicked(object sender, EventArgs e)
+        private void SaveInstructor_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage());
+            
         }
-
-        private void EditTerm_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

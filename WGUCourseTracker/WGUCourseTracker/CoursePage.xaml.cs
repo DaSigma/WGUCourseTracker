@@ -19,15 +19,15 @@ namespace WGUCourseTracker
 
         private void AddAssessment_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new AssesmentsPage());
         }
 
         private void AddInstructor_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new AddInstructorPage());
         }
 
-        private void SaveItem_Clicked(object sender, EventArgs e)
+        private void SaveCourse_Clicked(object sender, EventArgs e)
         {
 
         }

@@ -23,7 +23,7 @@
                         HorizontalOptions="Center"
                         Text="Course Tracker"
                         TextColor="#11213d"
-                        FontSize="Title"/>
+                        FontSize="Small"/>
                     <ContentPresenter VerticalOptions="FillAndExpand" />
                     <Label                          
                         HorizontalTextAlignment="End"

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGUCourseTracker.AssesmentsPage"
+             ControlTemplate="{StaticResource Key=Template}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save"
+                     Clicked="SaveAssessment_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label 
+                    Style="{StaticResource Header1}"
+                    Text="Add Assessment" 
+                    FontSize="Title" 
+                    Padding="5,0,0,0" 
+                    FontAttributes="Bold"/>
+            <Picker x:Name="Type"
+                Title="Assessment Type"
+                            TitleColor="Black"
+                            VerticalOptions="End">
+                <Picker.Items>
+                    <x:String>Performance</x:String>
+                    <x:String>Objective</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry x:Name="AssessmentName"
+                   Placeholder="Assessment Name"/>
+            <StackLayout
+                Padding="5,0,0,0"
+                Orientation="Horizontal">
+                <Label 
+                    VerticalTextAlignment="Center"
+                    Text="Due Date"/>
+                <DatePicker/>
+
+            </StackLayout>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
