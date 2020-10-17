@@ -17,7 +17,7 @@ namespace WGUCourseTracker
         public TermViewPage()
         {
             InitializeComponent();
-            Term term = (Term)mainStackLayout.BindingContext;
+            
         }
         async void SaveTerm_Clicked(object sender, EventArgs e)
         {
@@ -27,7 +27,8 @@ namespace WGUCourseTracker
                 con.CreateTable<Term>();
 
                 if (startDatePicker.Date < endDatePicker.Date && termEntry != null)
-                {                   
+                {
+                    term = (Term)mainStackLayout.BindingContext;
                     con.Update(term);
                     await DisplayAlert("Success!", $"{term.TermName} Updated", "Ok");
                     Page new1 = new TermListPage();
@@ -36,7 +37,7 @@ namespace WGUCourseTracker
                 }
                 else
                 {
-                    await DisplayAlert("Failure", "Term not Created", "Ok");
+                    await DisplayAlert("Error", "Term not Created", "Ok");
                 }
             }
         }

@@ -10,10 +10,11 @@ using Xamarin.Forms.Xaml;
 
 namespace WGUCourseTracker
 {
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class TermListPage : ContentPage
     {
-
         public TermListPage()
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace WGUCourseTracker
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            
 
             using(SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
@@ -38,17 +40,16 @@ namespace WGUCourseTracker
 
         async void EditTerm_Clicked(object sender, EventArgs e)
         {
-            var selectedTerm = (Term)termsListView.SelectedItem;
+            if (termsListView.SelectedItem != null)
+            {
+                var selectedTerm = (Term)termsListView.SelectedItem;
 
-            await Navigation.PushAsync(new TermViewPage {BindingContext = selectedTerm as Term });
-
-            //using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
-            //{
-            //    Page newMainPage = new TermViewPage();
-                
-            //    Navigation.InsertPageBefore(newMainPage, this);
-            //    //await Navigation.PopAsync();
-            //}
+                await Navigation.PushAsync(new TermViewPage { BindingContext = selectedTerm as Term });
+            }
+            else
+            {
+                await DisplayAlert("Error!", "Please Select a Term", "Ok");
+            }
 
         }
 
