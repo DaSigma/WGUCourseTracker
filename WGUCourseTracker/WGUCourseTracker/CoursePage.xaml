@@ -57,21 +57,21 @@
                     Padding="0,0,0,5">
                     <StackLayout Orientation="Horizontal">
                         <Label 
-                        FontSize="Micro"
-                        VerticalOptions="Center"
-                        x:Name="startDateLabel" 
-                        Text="Start Date:" 
-                        Padding="5,0,0,0"/>
+                            FontSize="Micro"
+                            VerticalOptions="Center"
+                            x:Name="startDateLabel" 
+                            Text="Start Date:" 
+                            Padding="5,0,0,0"/>
                         <DatePicker FontSize="Small" VerticalOptions="Center"></DatePicker>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" >
                         <Label
-                        FontSize="Micro"
-                        VerticalOptions="Center"
-                        x:Name="endDateLabel" 
-                        Text="End Date:" 
-                        Padding="5,0,0,0"/>
+                            FontSize="Micro"
+                            VerticalOptions="Center"
+                            x:Name="endDateLabel" 
+                            Text="End Date:" 
+                            Padding="5,0,0,0"/>
                         <DatePicker FontSize="Small" VerticalOptions="Center"></DatePicker>
                     </StackLayout>
 
@@ -84,8 +84,8 @@
                     WidthRequest="500">
 
                         <Label 
-                        Style="{StaticResource Header2}"
-                        Text="Instructor Info:"/>
+                            Style="{StaticResource Header2}"
+                            Text="Instructor Info:"/>
                     <Frame 
                         HeightRequest="80"
                         Style="{StaticResource bg}">
@@ -94,7 +94,7 @@
                     </Frame>
                 </StackLayout>
                 <StackLayout 
-                   WidthRequest="500"
+                    WidthRequest="500"
                     Orientation="Vertical">
                     <Label
                         Style="{StaticResource Header2}"
@@ -102,7 +102,7 @@
                         <StackLayout>
                             <Frame 
                                 HeightRequest="80"
-                            Style="{StaticResource bg}">
+                                Style="{StaticResource bg}">
                             <StackLayout>
                             <StackLayout 
                                 Orientation="Horizontal">

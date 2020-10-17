@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WGUCourseTracker"
-             x:Class="WGUCourseTracker.MainPage"
+             x:Class="WGUCourseTracker.TermViewPage"
              ControlTemplate="{StaticResource Key=Template}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Course"
@@ -14,46 +14,47 @@
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-    <StackLayout Padding="5, 20,5,5">
+        <StackLayout x:Name="mainStackLayout" Padding="5, 20,5,5">
 
-        <Label 
+            <Label 
             Style="{StaticResource Header1}"
-            Text="Create Term" 
+            Text="Edit Term" 
             FontSize="Title" 
             Padding="10,10,0,10" 
             FontAttributes="Bold"/>
 
-        <StackLayout Orientation="Horizontal">
-            <Label 
+            <StackLayout Orientation="Horizontal">
+                <Label 
                 VerticalOptions="End"
                 x:Name="termNameLabel" 
                 Text="Term:" 
                 Padding="20,0,30,0"/>
-            <Entry 
+                <Editor x:Name="termEntry"
+                   Text="{Binding TermName, Mode=TwoWay}"
                 VerticalOptions="End"
                 Placeholder="Term Name"/>
-        </StackLayout>
+            </StackLayout>
 
-        <StackLayout Orientation="Horizontal">
-            <Label 
+            <StackLayout Orientation="Horizontal">
+                <Label 
                 VerticalOptions="End"
                 x:Name="startDateLabel" 
                 Text="Start Date:" 
                 Padding="20,0,0,0"/>
-            <DatePicker VerticalOptions="End"></DatePicker>
-        </StackLayout>
+                <DatePicker Date="{Binding TermStartDate, Mode=TwoWay}" x:Name="startDatePicker" VerticalOptions="End"></DatePicker>
+            </StackLayout>
 
-        <StackLayout Orientation="Horizontal" >
-            <Label
+            <StackLayout Orientation="Horizontal" >
+                <Label
                 VerticalOptions="End"
                 x:Name="endDateLabel" 
                 Text="End Date:" 
                 Padding="20,0,8,0"/>
-            <DatePicker VerticalOptions="End"></DatePicker>
-        </StackLayout>
-        
-        <StackLayout>
-            <Label Text="Courses:"/>
+                <DatePicker Date="{Binding TermEndDate, Mode=TwoWay}" x:Name="endDatePicker" VerticalOptions="End"></DatePicker>
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="Courses:"/>
                 <Frame  
                 Style="{StaticResource bg}"
                 WidthRequest="100" HeightRequest="150">

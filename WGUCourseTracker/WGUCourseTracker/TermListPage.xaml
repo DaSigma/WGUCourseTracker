@@ -21,15 +21,38 @@
             FontAttributes="Bold"/>
             <StackLayout>
                 <Label Text="Terms:"/>
-                <Frame  
-                       Style="{StaticResource bg}"
-                        WidthRequest="100" HeightRequest="350">
+                <Frame Style="{StaticResource bg}"
+                       WidthRequest="100" HeightRequest="350">
                     <StackLayout>
                         <ListView x:Name="termsListView">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout>
+                                            <Label Text= "{Binding TermName}"
+                                                FontAttributes="Bold"/>
+                                            <Label Text="Dates: ">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text=  "{Binding TermStartDate,
+                                                        StringFormat='{0:MMM dd, yyyy}'}"
+                                                        FontSize="Small" />
+                                                    <Span Text=" to "/>
+                                                    <Span Text="{Binding TermEndDate,
+                                                        StringFormat='{0:MMM dd, yyyy}'}"
+                                                        FontSize="Small"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
                 </Frame>
-                <Button Text="Delete"/>
+                <Button Text="Delete"
+                        Clicked="DeleteButton_Clicked"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
