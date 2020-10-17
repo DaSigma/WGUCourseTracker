@@ -17,7 +17,7 @@ namespace WGUCourseTracker
         public TermViewPage()
         {
             InitializeComponent();
-            Term term = (Term)mainStackLayout.BindingContext
+            Term term = (Term)mainStackLayout.BindingContext;
         }
         async void SaveTerm_Clicked(object sender, EventArgs e)
         {
