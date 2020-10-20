@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace WGUCourseTracker
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AssesmentsPage : ContentPage
+    public partial class AssessmentViewPage : ContentPage
     {
-        public AssesmentsPage()
+        public AssessmentViewPage()
         {
             InitializeComponent();
         }

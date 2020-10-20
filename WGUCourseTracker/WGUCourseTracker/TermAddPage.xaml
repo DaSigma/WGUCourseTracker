@@ -2,13 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WGUCourseTracker"
-             x:Class="WGUCourseTracker.TermEditPage"
+             x:Class="WGUCourseTracker.TermAddPage"
              ControlTemplate="{StaticResource Key=Template}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Course"
-                     Clicked="NewCourse_Clicked"/>
-        <ToolbarItem Text="Edit Course"
-                     Clicked="EditCourse_Clicked"/>
         <ToolbarItem Text="Save"
                      Clicked="SaveTerm_Clicked"/>
     </ContentPage.ToolbarItems>
@@ -18,7 +14,7 @@
 
         <Label 
             Style="{StaticResource Header1}"
-            Text="Create Term" 
+            Text="Add Term" 
             FontSize="Title" 
             Padding="10,10,0,10" 
             FontAttributes="Bold"/>
@@ -44,26 +40,13 @@
             <DatePicker x:Name="startDatePicker" VerticalOptions="End"></DatePicker>
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal" >
-            <Label
+            <StackLayout Orientation="Horizontal" >
+                <Label
                 VerticalOptions="End"
                 x:Name="endDateLabel" 
                 Text="End Date:" 
                 Padding="20,0,8,0"/>
-            <DatePicker x:Name="endDatePicker" VerticalOptions="End"></DatePicker>
-        </StackLayout>
-        
-        <StackLayout>
-            <Label Text="Courses:"/>
-                <Frame  
-                Style="{StaticResource bg}"
-                WidthRequest="100" HeightRequest="150">
-                    <StackLayout>
-                        <ListView x:Name="termsListView">
-                        </ListView>
-                    </StackLayout>
-                </Frame>
-                <Button Text="Delete"/>
+                <DatePicker x:Name="endDatePicker" VerticalOptions="End"></DatePicker>
             </StackLayout>
         </StackLayout>
     </ScrollView>

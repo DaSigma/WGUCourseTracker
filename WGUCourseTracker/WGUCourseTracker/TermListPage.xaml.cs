@@ -15,16 +15,18 @@ namespace WGUCourseTracker
 
     public partial class TermListPage : ContentPage
     {
+        
         public TermListPage()
         {
             InitializeComponent();
+            
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
+            termsListView.SelectedItem = null;
 
-            using(SQLiteConnection con = new SQLiteConnection(App.DbLocation))
+            using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
                 con.CreateTable<Term>();
 
@@ -35,11 +37,12 @@ namespace WGUCourseTracker
         }
         private void AddTerm_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new TermEditPage());
+            Navigation.PushAsync(new TermAddPage());
         }
 
         async void EditTerm_Clicked(object sender, EventArgs e)
         {
+            
             if (termsListView.SelectedItem != null)
             {
                 var selectedTerm = (Term)termsListView.SelectedItem;
@@ -48,7 +51,7 @@ namespace WGUCourseTracker
             }
             else
             {
-                await DisplayAlert("Error!", "Please Select a Term", "Ok");
+                await DisplayAlert("Error!", "Please Select a Term.", "Ok");
             }
 
         }

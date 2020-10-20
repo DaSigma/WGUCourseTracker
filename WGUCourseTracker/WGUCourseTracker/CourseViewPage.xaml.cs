@@ -10,16 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace WGUCourseTracker
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CoursePage : ContentPage
+    public partial class CourseViewPage: ContentPage
     {
-        public CoursePage()
+        public CourseViewPage()
         {
             InitializeComponent();
         }
 
         private void AddAssessment_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AssesmentsPage());
+            Navigation.PushAsync(new AssessmentViewPage());
         }
 
         private void AddInstructor_Clicked(object sender, EventArgs e)

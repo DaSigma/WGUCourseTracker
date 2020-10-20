@@ -11,9 +11,9 @@ using SQLite;
 
 namespace WGUCourseTracker
 {
-    public partial class TermEditPage : ContentPage
+    public partial class TermAddPage : ContentPage
     {
-        public TermEditPage()
+        public TermAddPage()
         {
             InitializeComponent();
             
@@ -48,15 +48,5 @@ namespace WGUCourseTracker
             }
         }
 
-        private void NewCourse_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new CoursePage());
-        }
-
-        private void EditCourse_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new CoursePage());
-
-        }
     }
 }

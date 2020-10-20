@@ -30,8 +30,20 @@
     <Compile Update="AddInstructorPage.xaml.cs">
       <DependentUpon>AddInstructorPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="TermEditPage.xaml.cs">
-      <DependentUpon>TermEditPage.xaml</DependentUpon>
+    <Compile Update="AssessmentsViewPage.xaml.cs">
+      <DependentUpon>AssessmentsViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="AssessmentsAddPage.xaml.cs">
+      <DependentUpon>AssessmentsAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="CourseViewPage.xaml.cs">
+      <DependentUpon>CourseViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="CourseAddPage.xaml.cs">
+      <DependentUpon>CourseAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="TermAddPage.xaml.cs">
+      <DependentUpon>TermAddPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="TermListPage.xaml.cs">
       <DependentUpon>TermListPage.xaml</DependentUpon>
@@ -42,10 +54,10 @@
     <EmbeddedResource Update="AddInstructorPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="AssesmentsPage.xaml">
+    <EmbeddedResource Update="AssessmentsAddPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="CoursePage.xaml">
+    <EmbeddedResource Update="CourseAddPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="TermListPage.xaml">

@@ -18,7 +18,7 @@
 
             <Label 
             Style="{StaticResource Header1}"
-            Text="Edit Term" 
+            Text= "{Binding  TermName, StringFormat= ' {0} View/Edit'}"
             FontSize="Title" 
             Padding="10,10,0,10" 
             FontAttributes="Bold"/>
@@ -58,8 +58,40 @@
                 <Frame  
                 Style="{StaticResource bg}"
                 WidthRequest="100" HeightRequest="150">
-                    <StackLayout>
-                        <ListView x:Name="termsListView">
+                    <StackLayout x:Name="courseStackLayout"
+                                 VerticalOptions="FillAndExpand"
+                                 HorizontalOptions="CenterAndExpand">
+                        <ListView x:Name="courseListView"
+                                  HasUnevenRows="True"
+                                  SeparatorVisibility="None">
+                            
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     VerticalOptions="FillAndExpand"
+                                                     Padding="2">
+                                            <Label Text="Dates: " HorizontalOptions="FillAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                        <Span Text= "{Binding CourseName}"
+                                                              FontAttributes="Bold"
+                                                              FontSize="Small"/>
+                                                        <Span Text=  "{Binding CourseStartDate,
+                                                        StringFormat='{0:MMM dd, yyyy}'}"
+                                                        FontSize="Small" />
+                                                        <Span Text=" to "/>
+                                                        <Span Text="{Binding CourseEndDate,
+                                                            StringFormat='{0:MMM dd, yyyy}'}"
+                                                            FontSize="Small"/>
+                                                    </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
                 </Frame>
