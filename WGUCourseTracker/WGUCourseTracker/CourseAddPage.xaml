@@ -4,10 +4,6 @@
              x:Class="WGUCourseTracker.CourseAddPage"
              ControlTemplate="{StaticResource Key=Template}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Instructor"
-                     Clicked="AddInstructor_Clicked"/>
-        <ToolbarItem Text="Add Assessment"
-                     Clicked="AddAssessment_Clicked"/>
         <ToolbarItem Text="Save"
                      Clicked="SaveCourse_Clicked"/>
     </ContentPage.ToolbarItems>
@@ -26,7 +22,7 @@
                     VerticalOptions="Center"
                     FontSize="Medium"
                     FontAttributes="Bold"
-                    Text="{Binding TermName, StringFormat= 'Add to {0}'}"/>
+                    Text="{Binding TermName, StringFormat= 'Add Course to {0}'}"/>
                  </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -57,7 +53,7 @@
                     Padding="0,0,0,5">
                     <StackLayout Orientation="Horizontal">
                         <Label 
-                            FontSize="Micro"
+                            FontSize="Small"
                             VerticalOptions="Center"
                             x:Name="startDateLabel" 
                             Text="Start Date:" 
@@ -65,13 +61,12 @@
                         <DatePicker x:Name="startDatePicker"
                                     Date="{Binding CourseStartDate}"
                                     FontSize="Small" 
-                                    VerticalOptions="Center">                            
+                                    VerticalOptions="Center">
                         </DatePicker>
                     </StackLayout>
-
                     <StackLayout Orientation="Horizontal" >
                         <Label
-                            FontSize="Micro"
+                            FontSize="Small"
                             VerticalOptions="Center"
                             x:Name="endDateLabel" 
                             Text="End Date:" 
@@ -82,76 +77,22 @@
                                     VerticalOptions="Center">
                         </DatePicker>
                     </StackLayout>
+                    
 
                 </StackLayout>
-                <StackLayout 
-                    HorizontalOptions="FillAndExpand"
-                    Orientation="Horizontal">
-                    <StackLayout
-                        
-                    WidthRequest="500">
-
-                        <Label 
-                            Style="{StaticResource Header2}"
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Color="#11213d"/>
+                <StackLayout HorizontalOptions="Start"
+                             WidthRequest="200">
+                <Label Style="{StaticResource Header2}"
                             Text="Instructor Info:"/>
-                    <Frame 
-                        HeightRequest="80"
-                        Style="{StaticResource bg}">
-                            <StackLayout >
-                            </StackLayout>
-                    </Frame>
+                        <Entry x:Name="instructorNameEntry"
+                               Placeholder="Enter Name"/>
+                        <Entry x:Name="instructorPhoneEntry"
+                               Placeholder="Enter Phone#"/>
+                    <Entry x:Name="instructorEmailEntry"
+                               Placeholder="Enter Email"/>
                 </StackLayout>
-                <StackLayout 
-                    WidthRequest="500"
-                    Orientation="Vertical">
-                    <Label
-                        Style="{StaticResource Header2}"
-                        Text="Assessments:"/>
-                        <StackLayout>
-                            <Frame 
-                                HeightRequest="80"
-                                Style="{StaticResource bg}">
-                            <StackLayout>
-                            <StackLayout 
-                                Orientation="Horizontal">
-                                <Label
-                                    FontSize="Small"
-                                    Text="Perf:"/>
-                                <Label 
-                                    HorizontalOptions ="EndAndExpand"
-                                    VerticalTextAlignment="Center"
-                                    FontSize="Micro"
-                                    Text="PA Name"/>
-                            </StackLayout>
-                                <Label
-                                    FontSize="Micro"
-                                    Text="Due Date:"/>
-                            <StackLayout Orientation="Horizontal">
-                                <Label
-                                    FontSize="Small"
-                                    Text="Obj:"/>
-                                <Label
-                                    HorizontalOptions ="EndAndExpand"
-                                    FontSize="Micro"
-                                    Text="OA Name"/>
-                            </StackLayout>
-                                <Label
-                                    FontSize="Micro"
-                                    Text="Due Date:"/>
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>
-                    </StackLayout>
-                </StackLayout>
-                <Label
-                    Style="{StaticResource Header2}"
-                    Text="Notes:"/>
-                <Editor                    
-                    HeightRequest="150"
-                    BackgroundColor="LightGray"
-                    FontSize="Small">
-                   
-                </Editor>
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Color="#11213d"/>
                 <Button Text="Delete"/>
             </StackLayout>
         </ScrollView>

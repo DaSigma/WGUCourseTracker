@@ -20,16 +20,6 @@ namespace WGUCourseTracker
             InitializeComponent();
         }
 
-        private void AddAssessment_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new AssessmentViewPage());
-        }
-
-        private void AddInstructor_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new AddInstructorPage());
-        }
-
         async void SaveCourse_Clicked(object sender, EventArgs e)
         {
             term = (Term)mainStackLayout.BindingContext;
@@ -44,6 +34,13 @@ namespace WGUCourseTracker
 
             };
 
+            Instructor instructor = new Instructor()
+            {
+                InstructorName = instructorNameEntry.Text,
+                InstructorPhone = instructorPhoneEntry.Text,
+                InstructorEmail = instructorEmailEntry.Text
+            };
+
             using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
                 con.CreateTable<Course>();
@@ -54,8 +51,8 @@ namespace WGUCourseTracker
                     con.Insert(course);
                     await DisplayAlert("Success!", $"{course.CourseName} Created", "Ok");
                     Page new1 = new TermViewPage();
-                    Navigation.InsertPageBefore(new1, this);
                     new1.BindingContext = term as Term;
+                    //Navigation.InsertPageBefore(new1, this);
                     await Navigation.PopAsync();
                 }
                 else

@@ -59,38 +59,63 @@
                 Style="{StaticResource bg}"
                 WidthRequest="100" HeightRequest="150">
                     <StackLayout x:Name="courseStackLayout"
-                                 VerticalOptions="FillAndExpand"
-                                 HorizontalOptions="CenterAndExpand">
-                        <ListView x:Name="courseListView"
-                                  HasUnevenRows="True"
-                                  SeparatorVisibility="None">
-                            
-                        <ListView.ItemTemplate>
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="CenterAndExpand">
+                        <ListView ItemsSource="{Binding Course}"
+                            x:Name="courseListView"
+                            HasUnevenRows="True"
+                            SeparatorVisibility="None">
+                            <ListView.Header>
+                                <Grid>
+                                <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="Course Name"
+                                                   Grid.Column="0"
+                                                   Grid.Row="0"
+                                                   BackgroundColor="#11213d"
+                                                   TextColor="White"/>
+                                    <Label Text="Start Date"
+                                                   Grid.Column="1"
+                                                   Grid.Row="0"
+                                                   BackgroundColor="#11213d"
+                                                   TextColor="White"/>
+                                    <Label Text="End Date"
+                                                   Grid.Column="2"
+                                                   Grid.Row="0"
+                                                   BackgroundColor="#11213d"
+                                                   TextColor="White"/>
+                                    <Label Text="Course Name"
+                                                   Grid.Column="3"
+                                                   Grid.Row="0"
+                                                   BackgroundColor="#11213d"
+                                                   TextColor="White"/>
+                                </Grid>
+                            </ListView.Header>
+                                <ListView.ItemTemplate>
                             <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout Orientation="Horizontal"
-                                                     HorizontalOptions="FillAndExpand"
-                                                     VerticalOptions="FillAndExpand"
-                                                     Padding="2">
-                                            <Label Text="Dates: " HorizontalOptions="FillAndExpand">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                        <Span Text= "{Binding CourseName}"
-                                                              FontAttributes="Bold"
-                                                              FontSize="Small"/>
-                                                        <Span Text=  "{Binding CourseStartDate,
-                                                        StringFormat='{0:MMM dd, yyyy}'}"
-                                                        FontSize="Small" />
-                                                        <Span Text=" to "/>
-                                                        <Span Text="{Binding CourseEndDate,
-                                                            StringFormat='{0:MMM dd, yyyy}'}"
-                                                            FontSize="Small"/>
-                                                    </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
+                                <ViewCell>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <Label Text="{Binding CourseName}"
+                                                   Grid.Column="1"/>
+                                            <Label Text="{Binding CourseStartDate}"
+                                                   Grid.Column="2"/>
+                                            <Label Text="{Binding CourseStartDate}"
+                                                   Grid.Column="3"/>
+                                            <Label Text="{Binding CourseStatus}"
+                                                   Grid.Column="4"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
                         </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>

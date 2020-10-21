@@ -76,7 +76,7 @@ namespace WGUCourseTracker
 
         private void EditCourse_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CourseAddPage());
+            Navigation.PushAsync(new CourseViewPage());
 
         }
     }
