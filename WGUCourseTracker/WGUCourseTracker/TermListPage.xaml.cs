@@ -58,21 +58,25 @@ namespace WGUCourseTracker
 
         async void DeleteButton_Clicked(object sender, EventArgs e)
         {
-            using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
-            {
-                var selectedTerm = (Term)termsListView.SelectedItem;
+            var selectedTerm = (Term)termsListView.SelectedItem;
 
-                bool deleteTerm = await DisplayAlert("Delete?", $"Do you wish to delete '{selectedTerm.TermName}'?","Yes","No");
-                if (deleteTerm) 
+            if(selectedTerm != null)
+            {
+                using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
                 {
-                    con.Execute($"Delete from Term Where {selectedTerm.TermID} = TermID ");
-                    Page new1 = new TermListPage();
-                    Navigation.InsertPageBefore(new1, this);
+                    bool deleteTerm = await DisplayAlert("Delete?", $"Do you wish to delete '{selectedTerm.TermName}'?", "Yes", "No");
+                    if (deleteTerm)
+                    {
+                        con.Execute($"Delete from Term Where {selectedTerm.TermID} = TermID ");
+                        Page new1 = new TermListPage();
+                        Navigation.InsertPageBefore(new1, this);
+                        await Navigation.PopAsync();
+                    }
                     await Navigation.PopAsync();
                 }
-                await Navigation.PopAsync();
-
             }
+            await DisplayAlert("Error!", "Please Select a Term.", "Ok");
+
         }
     }
 }

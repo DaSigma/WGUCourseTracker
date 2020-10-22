@@ -20,7 +20,8 @@ namespace WGUCourseTracker
         public TermViewPage()
         {
             InitializeComponent();
-
+            term = (Term)mainStackLayout.BindingContext;
+            var selectedCourse = (Course)courseListView.SelectedItem;
 
         }
         protected override void OnAppearing()
@@ -74,9 +75,35 @@ namespace WGUCourseTracker
                 await Navigation.PushAsync(new CourseAddPage { BindingContext = selectedTerm as Term });
         }
 
-        private void EditCourse_Clicked(object sender, EventArgs e)
+        async void EditCourse_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CourseViewPage());
+            var selectedCourse = (Course)courseListView.SelectedItem;
+
+            await Navigation.PushAsync(new CourseViewPage { BindingContext = selectedCourse as Course });
+
+        }
+
+        async void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            var selectedCourse = (Course)courseListView.SelectedItem;
+
+            if (selectedCourse != null)
+            {
+                using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
+                {
+                    bool deleteCourse = await DisplayAlert("Delete?", $"Do you wish to delete '{selectedCourse.CourseName}'?", "Yes", "No");
+                    if (deleteCourse)
+                    {
+                        con.Execute($"Delete from Course Where {selectedCourse.CourseID} = CourseID ");
+                        Page new1 = new TermViewPage();
+                        new1.BindingContext = term as Term;
+                        Navigation.InsertPageBefore(new1, this);
+                        await Navigation.PopAsync();
+                    }
+
+                }
+            }
+            await DisplayAlert("Error!", "Please Select a Course.", "Ok");
 
         }
     }

@@ -8,7 +8,7 @@ namespace WGUCourseTracker.Model
     public class Course
     {
         [PrimaryKey, AutoIncrement]
-        public int CourseId { get; set; }
+        public int CourseID { get; set; }
         public string CourseName { get; set; }
         public DateTime  CourseStartDate { get; set; }
         public DateTime CourseEndDate { get; set; }

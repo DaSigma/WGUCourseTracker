@@ -7,7 +7,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Course"
                      Clicked="NewCourse_Clicked"/>
-        <ToolbarItem Text="Edit Course"
+        <ToolbarItem Text="View Course"
                      Clicked="EditCourse_Clicked"/>
         <ToolbarItem Text="Save"
                      Clicked="SaveTerm_Clicked"/>
@@ -18,7 +18,7 @@
 
             <Label 
             Style="{StaticResource Header1}"
-            Text= "{Binding  TermName, StringFormat= ' {0} View/Edit'}"
+            Text= "Term View"
             FontSize="Title" 
             Padding="10,10,0,10" 
             FontAttributes="Bold"/>
@@ -57,7 +57,7 @@
                 <Label Text="Courses:"/>
                 <Frame  
                 Style="{StaticResource bg}"
-                WidthRequest="100" HeightRequest="150">
+                WidthRequest="100" HeightRequest="200">
                     <StackLayout x:Name="courseStackLayout"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="CenterAndExpand">
@@ -67,7 +67,7 @@
                             SeparatorVisibility="None">
                             <ListView.Header>
                                 <Grid>
-                                <Grid.ColumnDefinitions>
+                                    <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
@@ -83,7 +83,7 @@
                                                    Grid.Row="0"
                                                    BackgroundColor="#11213d"
                                                    TextColor="White"/>
-                                    <Label Text="End Date"
+                                    <Label Text="Expected End"
                                                    Grid.Column="2"
                                                    Grid.Row="0"
                                                    BackgroundColor="#11213d"
@@ -95,7 +95,7 @@
                                                    TextColor="White"/>
                                 </Grid>
                             </ListView.Header>
-                                <ListView.ItemTemplate>
+                            <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                         <Grid>
@@ -103,15 +103,20 @@
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition/>
+                                                <RowDefinition Height="Auto"/>
                                             </Grid.RowDefinitions>
                                             <Label Text="{Binding CourseName}"
+                                                   VerticalTextAlignment="Center"
+                                                   FontAttributes="Bold"
                                                    Grid.Column="1"/>
-                                            <Label Text="{Binding CourseStartDate}"
+                                            <Label Text="{Binding CourseStartDate, StringFormat='{0:MM/dd/yyyy}'}"
+                                                   VerticalTextAlignment="Center"
                                                    Grid.Column="2"/>
-                                            <Label Text="{Binding CourseStartDate}"
+                                            <Label Text="{Binding CourseStartDate, StringFormat='{0:MM/dd/yyyy}'}"
+                                                   VerticalTextAlignment="Center"
                                                    Grid.Column="3"/>
                                             <Label Text="{Binding CourseStatus}"
+                                                   VerticalTextAlignment="Center"
                                                    Grid.Column="4"/>
                                         </Grid>
                                     </ViewCell>
@@ -120,7 +125,8 @@
                         </ListView>
                     </StackLayout>
                 </Frame>
-                <Button Text="Delete"/>
+                <Button Text="Remove Course"
+                    Clicked="DeleteButton_Clicked"/>
             </StackLayout>
         </StackLayout>
     </ScrollView>

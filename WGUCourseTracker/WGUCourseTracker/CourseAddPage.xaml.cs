@@ -24,26 +24,29 @@ namespace WGUCourseTracker
         {
             term = (Term)mainStackLayout.BindingContext;
 
-            Course course = new Course()
-            {
-                CourseName = courseEntry.Text,
-                CourseStartDate = startDatePicker.Date,
-                CourseEndDate = endDatePicker.Date,
-                CourseStatus = statusPicker.SelectedItem.ToString(),
-                TermID = term.TermID
-
-            };
-
-            Instructor instructor = new Instructor()
-            {
-                InstructorName = instructorNameEntry.Text,
-                InstructorPhone = instructorPhoneEntry.Text,
-                InstructorEmail = instructorEmailEntry.Text
-            };
-
             using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
                 con.CreateTable<Course>();
+                con.CreateTable<Instructor>();
+
+
+                Course course = new Course()
+                {
+                    CourseName = courseEntry.Text,
+                    CourseStartDate = startDatePicker.Date,
+                    CourseEndDate = endDatePicker.Date,
+                    CourseStatus = statusPicker.SelectedItem.ToString(),
+                    TermID = term.TermID
+
+                };
+
+                Instructor instructor = new Instructor()
+                {
+                    InstructorName = instructorNameEntry.Text,
+                    InstructorPhone = instructorPhoneEntry.Text,
+                    InstructorEmail = instructorEmailEntry.Text,
+                    CourseID = course.CourseID
+                };
 
                 if (startDatePicker.Date < endDatePicker.Date && courseEntry != null)
                 {

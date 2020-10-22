@@ -5,17 +5,19 @@
              ControlTemplate="{StaticResource Key=Template}">
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Term"
+        <ToolbarItem Text="Add"
                       Clicked="AddTerm_Clicked"/>
-        <ToolbarItem Text="Edit Term"
+        <ToolbarItem Text="View"
                       Clicked="EditTerm_Clicked"/>
+        <ToolbarItem Text="Delete"
+                     Clicked="DeleteButton_Clicked"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
         <StackLayout Padding="5,0,5,0">
             <Label 
             Style="{StaticResource Header1}"
-            Text="View Terms" 
+            Text="Terms View" 
             FontSize="Large" 
             Padding="10,10,0,10" 
             FontAttributes="Bold"/>
@@ -32,17 +34,17 @@
                                             <Label Text= "{Binding TermName}"
                                                 FontAttributes="Bold"/>
                                             <Label Text="Dates: ">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text=  "{Binding TermStartDate,
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text=  "{Binding TermStartDate,
                                                         StringFormat='{0:MMM dd, yyyy}'}"
                                                         FontSize="Small" />
-                                                    <Span Text=" to "/>
-                                                    <Span Text="{Binding TermEndDate,
+                                                        <Span Text=" to "/>
+                                                        <Span Text="{Binding TermEndDate,
                                                         StringFormat='{0:MMM dd, yyyy}'}"
                                                         FontSize="Small"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
                                             </Label>
                                         </StackLayout>
                                     </ViewCell>
@@ -51,8 +53,6 @@
                         </ListView>
                     </StackLayout>
                 </Frame>
-                <Button Text="Delete"
-                        Clicked="DeleteButton_Clicked"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

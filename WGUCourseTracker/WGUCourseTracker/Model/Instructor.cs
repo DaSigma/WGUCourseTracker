@@ -12,6 +12,7 @@ namespace WGUCourseTracker.Model
         public string InstructorName { get; set; }
         public string InstructorEmail { get; set; }
         public string InstructorPhone { get; set; }
+        public int CourseID { get; set; }
 
     }
 }
