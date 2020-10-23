@@ -26,32 +26,32 @@ namespace WGUCourseTracker
 
             using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
-                con.CreateTable<Course>();
-                con.CreateTable<Instructor>();
-
-
-                Course course = new Course()
-                {
-                    CourseName = courseEntry.Text,
-                    CourseStartDate = startDatePicker.Date,
-                    CourseEndDate = endDatePicker.Date,
-                    CourseStatus = statusPicker.SelectedItem.ToString(),
-                    TermID = term.TermID
-
-                };
-
-                Instructor instructor = new Instructor()
-                {
-                    InstructorName = instructorNameEntry.Text,
-                    InstructorPhone = instructorPhoneEntry.Text,
-                    InstructorEmail = instructorEmailEntry.Text,
-                    CourseID = course.CourseID
-                };
 
                 if (startDatePicker.Date < endDatePicker.Date && courseEntry != null)
                 {
-                    term = (Term)mainStackLayout.BindingContext;
+                    con.CreateTable<Course>();
+                    con.CreateTable<Instructor>();
+                    con.CreateTable<Assessment>();
+
+
+                    Course course = new Course()
+                    {
+                        CourseName = courseEntry.Text,
+                        CourseStartDate = startDatePicker.Date,
+                        CourseEndDate = endDatePicker.Date,
+                        CourseStatus = statusPicker.SelectedItem.ToString(),
+                        InstructorName = instructorNameEntry.Text,
+                        InstructorEmail = instructorEmailEntry.Text,
+                        InstructorPhone = instructorPhoneEntry.Text,
+                        TermID = term.TermID
+                    };
+
                     con.Insert(course);
+                    var courseId = course.CourseID;
+
+                    term = (Term)mainStackLayout.BindingContext;
+                    
+                    
                     await DisplayAlert("Success!", $"{course.CourseName} Created", "Ok");
                     Page new1 = new TermViewPage();
                     new1.BindingContext = term as Term;

@@ -11,11 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\delete.png" />
+    <None Remove="Assets\Images\edit.png" />
     <None Remove="Assets\Images\WGU logo.png" />
     <None Remove="Assets\Images\WGUlogo.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\delete.png" />
+    <EmbeddedResource Include="Assets\Images\edit.png" />
     <EmbeddedResource Include="Assets\Images\WGU logo.png" />
     <EmbeddedResource Include="Assets\Images\WGUlogo.png" />
   </ItemGroup>

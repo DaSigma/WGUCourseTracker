@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using WGUCourseTracker.Model;
@@ -14,7 +15,9 @@ namespace WGUCourseTracker
     public partial class CourseViewPage: ContentPage
     {
         Course course;
-        Instructor instructor;
+        public List<Assessment> courseAssessments { get; set; }
+
+        //Instructor instructor;
         public CourseViewPage()
         {
             InitializeComponent();
@@ -28,31 +31,39 @@ namespace WGUCourseTracker
 
             using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
+                con.CreateTable<Assessment>();
                 course = (Course)mainStackLayout.BindingContext;
-                
 
                 var courseID = course.CourseID;
+                var assessmentTable = con.Table<Assessment>().ToList();
 
-                con.CreateTable<Course>();
-                con.CreateTable<Assessment>();
-                con.CreateTable<Instructor>();
+                courseAssessments = con.Query<Assessment>($"Select * from Assessment where CourseID = {courseID}");
 
-                var courseTable = con.Table<Course>().ToList();
+                foreach(Assessment assessment in courseAssessments)
+                {
+                    if(assessment.AssessmentType == "Performance")
+                    {
+                        PAName.Text = assessment.AssessmentName;
+                        PADueDate.Text = assessment.AssessmentDueDate.ToString();
+                    }
+                    else
+                    {
+                        OAName.Text = assessment.AssessmentName;
+                        OADueDate.Text = assessment.AssessmentDueDate.ToString();
+                    }
+                }
+                //if(courseAssessments.)
 
-                var instructorTable = con.Table<Instructor>().ToList();
+                //PAName = courseAssessments.
+                //var courseTable = con.Table<Course>().ToList();
 
-                var courseInstructor = (from instructor in instructorTable
-                                  where instructor.CourseID == course.CourseID
-                                  select instructor);
-
-                instructorStackLayout.BindingContext = courseInstructor;
             }
 
         }
 
         private void AddAssessment_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AssessmentViewPage());
+            Navigation.PushAsync(new AssessmentAddPage(course));
         }
 
         private void AddInstructor_Clicked(object sender, EventArgs e)
@@ -61,6 +72,21 @@ namespace WGUCourseTracker
         }
 
         private void SaveCourse_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InstructerEdit_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AssessmentEdit_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AssessmentViewPage(course));
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
 
         }

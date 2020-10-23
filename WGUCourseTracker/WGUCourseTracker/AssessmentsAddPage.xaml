@@ -16,7 +16,7 @@
                     FontSize="Title" 
                     Padding="5,0,0,0" 
                     FontAttributes="Bold"/>
-            <Picker x:Name="Type"
+            <Picker x:Name="TypePicker"
                 Title="Assessment Type"
                             TitleColor="Black"
                             VerticalOptions="End">
@@ -33,7 +33,7 @@
                 <Label 
                     VerticalTextAlignment="Center"
                     Text="Due Date"/>
-                <DatePicker/>
+                <DatePicker x:Name="DueDatePicker"/>
 
             </StackLayout>
             </StackLayout>

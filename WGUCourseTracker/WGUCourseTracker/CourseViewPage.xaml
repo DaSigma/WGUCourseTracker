@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WGUCourseTracker"
              x:Class="WGUCourseTracker.CourseViewPage"
              ControlTemplate="{StaticResource Key=Template}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Edit Instructor"
-                     Clicked="AddInstructor_Clicked"/>
-        <ToolbarItem Text="Edit Assessments"
+        <ToolbarItem Text="Add Assessment"
                      Clicked="AddAssessment_Clicked"/>
         <ToolbarItem Text="Save"
                      Clicked="SaveCourse_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout x:Name="mainStackLayout" Padding="5, 20,5,5">
+            <StackLayout x:Name="mainStackLayout" Padding="10, 20,10,5">
                 <StackLayout Orientation="Horizontal">
                     <Label 
                     Style="{StaticResource Header1}"
@@ -38,8 +37,9 @@
                                Text="{Binding CourseName, Mode=TwoWay}"
                             VerticalOptions="End"
                             Placeholder="Course Name"/>
-                        <Picker x:Name="Status" 
-                            Title="{Binding CourseStatus, Mode=TwoWay}"
+                        <Picker x:Name="Status"
+                                WidthRequest="120"
+                            Title="{Binding CourseStatus}"
                             TitleColor="Green"
                             HorizontalOptions="EndAndExpand"
                             VerticalOptions="End">
@@ -86,9 +86,19 @@
                     Orientation="Horizontal">
                     <StackLayout 
                             WidthRequest="500">
-                        <Label Text="Instructor Info:"
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Instructor Info:"
                             Style="{StaticResource Header2}"/>
-                        <Frame HeightRequest="100"
+                            <Image Source="{local:ImageResource WGUCourseTracker.Assets.Images.edit.png}"
+                                   HorizontalOptions="EndAndExpand"
+                                   WidthRequest="30">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="InstructerEdit_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+
+                        <Frame HeightRequest="150"
                             Style="{StaticResource bg}">
                             <StackLayout  x:Name="instructorStackLayout">
                                 <Label Text="{Binding InstructorName,Mode=TwoWay}"/>
@@ -99,21 +109,42 @@
                     </StackLayout>
                     <StackLayout WidthRequest="500"
                         Orientation="Vertical">
-                        <Label Text="Assessments:"
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Assessments:"
+                                   HorizontalOptions="StartAndExpand"
                             Style="{StaticResource Header2}"/>
+                            <Image Source="{local:ImageResource WGUCourseTracker.Assets.Images.delete.png}"
+                                   HorizontalOptions="EndAndExpand"
+                                   WidthRequest="30"/>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                                          NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+
+                            <Image Source="{local:ImageResource WGUCourseTracker.Assets.Images.edit.png}"
+                                   Margin="0,0,10,0"
+                                   WidthRequest="30"
+                                   HorizontalOptions="EndAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AssessmentEdit_Tapped"
+                                                          NumberOfTapsRequired="1"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
                         <StackLayout>
-                            <Frame HeightRequest="100"
+                            <Frame HeightRequest="150"
                                 Style="{StaticResource bg}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="Perf:"
                                                FontSize="Small"/>
-                                        <Label Text="{Binding AssessmentName}"
+                                        <Label x:Name="PAName"
                                             HorizontalOptions ="EndAndExpand"
                                             VerticalTextAlignment="Center"
-                                            FontSize="Micro"/>
+                                            FontSize="Small"/>
                                     </StackLayout >
-                                    <Label Text="Due Date:"
+                                    <Label Text="Due Date:"/>
+                                    <Label x:Name="PADueDate"
                                         FontSize="Micro"/>
                                     <BoxView HorizontalOptions="FillAndExpand" 
                                         HeightRequest="1" 
@@ -121,12 +152,16 @@
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="Obj:"
                                             FontSize="Small"/>
-                                        <Label Text="{Binding AssessmentName}"
+                                        <Label x:Name="OAName"
                                             HorizontalOptions ="EndAndExpand"
-                                            FontSize="Micro"/>
+                                            FontSize="Small"/>
                                     </StackLayout>
                                     <Label Text="Due Date:"
                                         FontSize="Micro"/>
+                                    <Label x:Name="OADueDate"
+                                        FontSize="Micro"/>
+
+
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
