@@ -51,7 +51,7 @@ namespace WGUCourseTracker
             }
             else
             {
-                await DisplayAlert("Error!", "Please Select a Term.", "Ok");
+                await DisplayAlert("Error!", "Please Select a Term to View/Edit!", "Ok");
             }
 
         }
@@ -64,7 +64,7 @@ namespace WGUCourseTracker
             {
                 using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
                 {
-                    bool deleteTerm = await DisplayAlert("Delete?", $"Do you wish to delete '{selectedTerm.TermName}'?", "Yes", "No");
+                    bool deleteTerm = await DisplayAlert("Confirm!", $"Do you wish to delete '{selectedTerm.TermName}'?", "Yes", "No");
                     if (deleteTerm)
                     {
                         con.Execute($"Delete from Term Where {selectedTerm.TermID} = TermID ");
@@ -75,7 +75,11 @@ namespace WGUCourseTracker
                     await Navigation.PopAsync();
                 }
             }
-            await DisplayAlert("Error!", "Please Select a Term.", "Ok");
+            else
+            {
+                await DisplayAlert("Error!", "Please Select a Term to Remove!", "Ok");
+            }
+            
 
         }
     }

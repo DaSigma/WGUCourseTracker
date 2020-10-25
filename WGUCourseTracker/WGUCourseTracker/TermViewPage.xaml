@@ -30,9 +30,10 @@
                 Text="Term:" 
                 Padding="20,0,30,0"/>
                 <Editor x:Name="termEntry"
-                   Text="{Binding TermName, Mode=TwoWay}"
-                VerticalOptions="End"
-                Placeholder="Term Name"/>
+                        Text="{Binding TermName, Mode=TwoWay}"
+                        WidthRequest="150"
+                        VerticalOptions="End"
+                        Placeholder="Term Name"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">

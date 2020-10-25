@@ -23,8 +23,7 @@ namespace WGUCourseTracker
             InitializeComponent();
         }
 
-        
-
+      
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -34,6 +33,7 @@ namespace WGUCourseTracker
                 con.CreateTable<Assessment>();
                 course = (Course)mainStackLayout.BindingContext;
 
+                notesEditor.Text = course.CourseNotes;
                 var courseID = course.CourseID;
                 var assessmentTable = con.Table<Assessment>().ToList();
 
@@ -52,11 +52,6 @@ namespace WGUCourseTracker
                         OADueDate.Text = assessment.AssessmentDueDate.ToString();
                     }
                 }
-                //if(courseAssessments.)
-
-                //PAName = courseAssessments.
-                //var courseTable = con.Table<Course>().ToList();
-
             }
 
         }
@@ -66,19 +61,27 @@ namespace WGUCourseTracker
             Navigation.PushAsync(new AssessmentAddPage(course));
         }
 
-        private void AddInstructor_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new AddInstructorPage());
-        }
-
         private void SaveCourse_Clicked(object sender, EventArgs e)
         {
+            using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
+            {
+                con.CreateTable<Course>();
+                course = (Course)mainStackLayout.BindingContext;
 
+                var courseID = course.CourseID;
+
+                var selectedCourse = con.FindWithQuery<Course>($"Select * from Course where CourseID = {courseID}");
+
+                selectedCourse.CourseNotes = notesEditor.Text;
+
+                con.Update(selectedCourse);
+
+            }
         }
 
         private void InstructerEdit_Tapped(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new InstructorEditPage(course));
         }
 
         private void AssessmentEdit_Tapped(object sender, EventArgs e)
@@ -86,8 +89,18 @@ namespace WGUCourseTracker
             Navigation.PushAsync(new AssessmentViewPage(course));
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private void AssessmentDelete_Tapped(object sender, EventArgs e)
         {
+            Page new1 = new AssessmentViewPage(course);
+            
+
+            var deleteToolBarItem = new ToolbarItem
+            {
+                Text = "Delete"
+            };
+            new1.ToolbarItems.Clear();
+            Navigation.PushAsync(new1);
+            new1.ToolbarItems.Add(deleteToolBarItem);
 
         }
     }

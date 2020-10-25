@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,7 +57,7 @@ namespace WGUCourseTracker
                 if (startDatePicker.Date < endDatePicker.Date && termEntry != null)
                 {
                     con.Update(term);
-                    await DisplayAlert("Success!", $"{term.TermName} Updated", "Ok");
+                    await DisplayAlert("Success!", $"{term.TermName} Saved", "Ok");
                     Page new1 = new TermListPage();
                     Navigation.InsertPageBefore(new1, this);
                     await Navigation.PopAsync();
@@ -78,11 +79,18 @@ namespace WGUCourseTracker
         async void EditCourse_Clicked(object sender, EventArgs e)
         {
             var selectedCourse = (Course)courseListView.SelectedItem;
-
-            await Navigation.PushAsync(new CourseViewPage { BindingContext = selectedCourse as Course });
+            
+            if (selectedCourse != null)
+            {
+                await Navigation.PushAsync(new CourseViewPage { BindingContext = selectedCourse as Course });
+            }
+            else
+            {
+                await DisplayAlert("Error!", "Please Select a Course.", "Ok");
+            }
+            
 
         }
-
         async void DeleteButton_Clicked(object sender, EventArgs e)
         {
             var selectedCourse = (Course)courseListView.SelectedItem;
@@ -91,7 +99,7 @@ namespace WGUCourseTracker
             {
                 using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
                 {
-                    bool deleteCourse = await DisplayAlert("Delete?", $"Do you wish to delete '{selectedCourse.CourseName}'?", "Yes", "No");
+                    bool deleteCourse = await DisplayAlert("Confirm!", $"Do you wish to delete the '{selectedCourse.CourseName}' course?", "Yes", "No");
                     if (deleteCourse)
                     {
                         con.Execute($"Delete from Course Where {selectedCourse.CourseID} = CourseID ");
@@ -103,8 +111,12 @@ namespace WGUCourseTracker
 
                 }
             }
-            await DisplayAlert("Error!", "Please Select a Course.", "Ok");
-
+            else
+            {
+                await DisplayAlert("Error!", "Please Select a Course to Remove!", "Ok");
+            }
+            
         }
+
     }
 }

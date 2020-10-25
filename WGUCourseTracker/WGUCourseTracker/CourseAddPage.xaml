@@ -31,11 +31,13 @@
                         Orientation="Horizontal" 
                         HorizontalOptions="FillAndExpand">
                         <Entry x:Name="courseEntry"
+                               WidthRequest="150"
                                VerticalOptions="End"
                                Placeholder="Course Name"/>
                         <Picker x:Name="statusPicker" 
                                 Title="Select Status"
                                 TitleColor="Green"
+                                WidthRequest="150"
                                 HorizontalOptions="EndAndExpand"
                                 VerticalOptions="End">
                             <Picker.Items>
@@ -98,9 +100,13 @@
                                Placeholder="Enter Name"/>
                         <Entry x:Name="instructorPhoneEntry"
                                Grid.Row="1"
+                               WidthRequest="150"
+                               Keyboard="Telephone"
                                Placeholder="Enter Phone#"/>
-                    <Entry x:Name="instructorEmailEntry"
-                                Grid.Row="2"
+                        <Entry x:Name="instructorEmailEntry"
+                               Grid.Row="2"
+                               WidthRequest="150"
+                               Keyboard="Email"
                                Placeholder="Enter Email"/>
                     </Grid>
                 </StackLayout>

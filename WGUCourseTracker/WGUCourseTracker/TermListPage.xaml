@@ -33,10 +33,10 @@
                                         <StackLayout>
                                             <Label Text= "{Binding TermName}"
                                                 FontAttributes="Bold"/>
-                                            <Label Text="Dates: ">
+                                            <Label VerticalTextAlignment="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text=  "{Binding TermStartDate,
+                                                        <Span Text= "{Binding TermStartDate,
                                                         StringFormat='{0:MMM dd, yyyy}'}"
                                                         FontSize="Small" />
                                                         <Span Text=" to "/>

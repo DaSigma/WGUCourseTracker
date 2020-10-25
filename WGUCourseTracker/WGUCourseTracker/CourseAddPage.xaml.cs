@@ -27,42 +27,65 @@ namespace WGUCourseTracker
             using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
 
-                if (startDatePicker.Date < endDatePicker.Date && courseEntry != null)
-                {
-                    con.CreateTable<Course>();
-                    con.CreateTable<Instructor>();
-                    con.CreateTable<Assessment>();
+                if (DateCheck() && NullCheck())
 
-
-                    Course course = new Course()
                     {
-                        CourseName = courseEntry.Text,
-                        CourseStartDate = startDatePicker.Date,
-                        CourseEndDate = endDatePicker.Date,
-                        CourseStatus = statusPicker.SelectedItem.ToString(),
-                        InstructorName = instructorNameEntry.Text,
-                        InstructorEmail = instructorEmailEntry.Text,
-                        InstructorPhone = instructorPhoneEntry.Text,
-                        TermID = term.TermID
-                    };
+                        con.CreateTable<Course>();
+                        con.CreateTable<Instructor>();
+                        con.CreateTable<Assessment>();
 
-                    con.Insert(course);
-                    var courseId = course.CourseID;
+                        Course course = new Course()
+                        {
+                            CourseName = courseEntry.Text, 
+                            CourseStartDate = startDatePicker.Date,
+                            CourseEndDate = endDatePicker.Date,
+                            CourseStatus = statusPicker.SelectedItem.ToString(),
+                            InstructorName = instructorNameEntry.Text,
+                            InstructorEmail = instructorEmailEntry.Text,
+                            InstructorPhone = instructorPhoneEntry.Text,
+                            TermID = term.TermID
+                        };
 
-                    term = (Term)mainStackLayout.BindingContext;
+                        con.Insert(course);
+                        var courseId = course.CourseID;
+
+                        term = (Term)mainStackLayout.BindingContext;
                     
                     
-                    await DisplayAlert("Success!", $"{course.CourseName} Created", "Ok");
-                    Page new1 = new TermViewPage();
-                    new1.BindingContext = term as Term;
-                    //Navigation.InsertPageBefore(new1, this);
-                    await Navigation.PopAsync();
+                        await DisplayAlert("Success!", $"{course.CourseName} course Created successfully!", "Ok");
+                        Page new1 = new TermViewPage();
+                        new1.BindingContext = term as Term;
+                        //Navigation.InsertPageBefore(new1, this);
+                        await Navigation.PopAsync();
                 }
                 else
                 {
-                    await DisplayAlert("Failure", "Course not Created", "Ok");
+                    return;
                 }
             }
         }
+        private bool NullCheck()
+        {
+            if (!String.IsNullOrEmpty(courseEntry.Text)
+                && (statusPicker.SelectedItem != null)
+                && !String.IsNullOrEmpty(instructorEmailEntry.Text)
+                && !String.IsNullOrEmpty(instructorNameEntry.Text)
+                && !String.IsNullOrEmpty(instructorPhoneEntry.Text))
+            {
+                return true;
+            }
+            DisplayAlert("Error!", "Please fill in all information!", "Ok");
+            return false;
+        }
+        private bool DateCheck()
+        {
+            if (startDatePicker.Date < endDatePicker.Date)
+            {
+                return true;
+            }
+            DisplayAlert("Error!", "Start Date must be greater than End Date!", "OK");
+            return false;
+        }
+
     }
 }

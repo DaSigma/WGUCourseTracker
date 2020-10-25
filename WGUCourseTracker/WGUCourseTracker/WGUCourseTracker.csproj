@@ -31,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="AddInstructorPage.xaml.cs">
-      <DependentUpon>AddInstructorPage.xaml</DependentUpon>
+    <Compile Update="InstructorEditPage.xaml.cs">
+      <DependentUpon>InstructorEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="AssessmentsViewPage.xaml.cs">
       <DependentUpon>AssessmentsViewPage.xaml</DependentUpon>
@@ -55,7 +55,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="AddInstructorPage.xaml">
+    <EmbeddedResource Update="InstructorEditPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="AssessmentsAddPage.xaml">

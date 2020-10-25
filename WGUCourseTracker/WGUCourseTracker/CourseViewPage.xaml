@@ -7,7 +7,8 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Assessment"
                      Clicked="AddAssessment_Clicked"/>
-        <ToolbarItem Text="Save"
+        <ToolbarItem x:Name="saveToolbarItem"
+            Text="Save"
                      Clicked="SaveCourse_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -35,10 +36,11 @@
                         HorizontalOptions="FillAndExpand">
                         <Entry x:Name="courseNameEntry"
                                Text="{Binding CourseName, Mode=TwoWay}"
-                            VerticalOptions="End"
+                            VerticalOptions="EndAndExpand"
+                               WidthRequest="150"
                             Placeholder="Course Name"/>
                         <Picker x:Name="Status"
-                                WidthRequest="120"
+                                WidthRequest="150"
                             Title="{Binding CourseStatus}"
                             TitleColor="Green"
                             HorizontalOptions="EndAndExpand"
@@ -115,12 +117,12 @@
                             Style="{StaticResource Header2}"/>
                             <Image Source="{local:ImageResource WGUCourseTracker.Assets.Images.delete.png}"
                                    HorizontalOptions="EndAndExpand"
-                                   WidthRequest="30"/>
+                                   WidthRequest="30">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
-                                                          NumberOfTapsRequired="1"/>
+                                <TapGestureRecognizer Tapped="AssessmentDelete_Tapped"
+                                                          NumberOfTapsRequired="1" />
                             </Image.GestureRecognizers>
-
+                            </Image>
                             <Image Source="{local:ImageResource WGUCourseTracker.Assets.Images.edit.png}"
                                    Margin="0,0,10,0"
                                    WidthRequest="30"
@@ -161,7 +163,6 @@
                                     <Label x:Name="OADueDate"
                                         FontSize="Micro"/>
 
-
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
@@ -170,7 +171,8 @@
                 <Label
                     Style="{StaticResource Header2}"
                     Text="Notes:"/>
-                <Editor                    
+                <Editor x:Name="notesEditor"
+                    Text ="{Binding CourseNotes, Mode=TwoWay}"                    
                     HeightRequest="150"
                     BackgroundColor="LightGray"
                     FontSize="Small">

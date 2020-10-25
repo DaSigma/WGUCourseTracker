@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using WGUCourseTracker.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WGUCourseTracker
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddInstructorPage : ContentPage
+    public partial class InstructorEditPage : ContentPage
     {
-        public AddInstructorPage()
+        public InstructorEditPage(Course course)
         {
             InitializeComponent();
         }
