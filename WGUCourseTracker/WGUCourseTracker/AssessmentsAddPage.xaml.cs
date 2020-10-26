@@ -66,12 +66,6 @@ namespace WGUCourseTracker
                 con.Insert(assessment);
                 await Navigation.PopAsync();
 
-                    //var assessmentTable = con.Table<Assessment>().ToList();
-
-
-                    //PAName = courseAssessments.
-                    //var courseTable = con.Table<Course>().ToList();
-
                 }
             }
         }

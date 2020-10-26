@@ -18,7 +18,7 @@ namespace WGUCourseTracker
         public List<Assessment> courseAssessments { get; set; }
 
         //Instructor instructor;
-        public CourseViewPage()
+        public CourseViewPage(Course course)
         {
             InitializeComponent();
         }
@@ -27,13 +27,14 @@ namespace WGUCourseTracker
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            
             using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
                 con.CreateTable<Assessment>();
                 course = (Course)mainStackLayout.BindingContext;
 
                 notesEditor.Text = course.CourseNotes;
+                Status.SelectedItem = course.CourseStatus;
                 var courseID = course.CourseID;
                 var assessmentTable = con.Table<Assessment>().ToList();
 
@@ -44,12 +45,12 @@ namespace WGUCourseTracker
                     if(assessment.AssessmentType == "Performance")
                     {
                         PAName.Text = assessment.AssessmentName;
-                        PADueDate.Text = assessment.AssessmentDueDate.ToString();
+                        PADueDate.Text = assessment.AssessmentDueDate.ToString("MMM dd, yyyy");
                     }
                     else
                     {
                         OAName.Text = assessment.AssessmentName;
-                        OADueDate.Text = assessment.AssessmentDueDate.ToString();
+                        OADueDate.Text = assessment.AssessmentDueDate.ToString("MMM dd, yyyy");
                     }
                 }
             }
@@ -61,7 +62,7 @@ namespace WGUCourseTracker
             Navigation.PushAsync(new AssessmentAddPage(course));
         }
 
-        private void SaveCourse_Clicked(object sender, EventArgs e)
+        async void SaveCourse_Clicked(object sender, EventArgs e)
         {
             using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
@@ -72,11 +73,29 @@ namespace WGUCourseTracker
 
                 var selectedCourse = con.FindWithQuery<Course>($"Select * from Course where CourseID = {courseID}");
 
+                
                 selectedCourse.CourseNotes = notesEditor.Text;
+                selectedCourse.CourseName = courseNameEntry.Text;
+                selectedCourse.CourseStatus = Status.SelectedItem.ToString();
+                selectedCourse.CourseStartDate = startDatePicker.Date;
+                selectedCourse.CourseEndDate = endDatePicker.Date;
+
+                course = selectedCourse;
 
                 con.Update(selectedCourse);
 
+
             }
+            await DisplayAlert("Saved!", $"'{course.CourseName}' course updated!", "Ok");
+
+            Page new1 = new CourseViewPage(course) { BindingContext = course as Course };
+            //new1.BindingContext = course as Course;
+            Navigation.InsertPageBefore(new1, this);
+            await Navigation.PopAsync();
+
+
+
+
         }
 
         private void InstructerEdit_Tapped(object sender, EventArgs e)

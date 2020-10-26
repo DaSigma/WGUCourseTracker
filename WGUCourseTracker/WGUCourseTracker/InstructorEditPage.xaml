@@ -17,12 +17,12 @@
                     FontAttributes="Bold"/>
             <Entry x:Name="InstructorName"
                    Placeholder="Name"/>
-            <Entry x:Name="InstructorEmail"
-                   Keyboard="Email"
-                   Placeholder="instructor@email.com"/>
             <Entry x:Name="InstructorPhone"
                    Keyboard="Telephone"
                    Placeholder="337-333-4444"/>
+            <Entry x:Name="InstructorEmail"
+                   Keyboard="Email"
+                   Placeholder="instructor@email.com"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

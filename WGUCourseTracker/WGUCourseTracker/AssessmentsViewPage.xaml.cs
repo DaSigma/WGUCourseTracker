@@ -29,9 +29,6 @@ namespace WGUCourseTracker
             {
                 con.CreateTable<Assessment>();
                 
-
-                
-
             }
         }
 

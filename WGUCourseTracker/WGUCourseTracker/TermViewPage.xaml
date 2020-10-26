@@ -113,7 +113,7 @@
                                             <Label Text="{Binding CourseStartDate, StringFormat='{0:MM/dd/yyyy}'}"
                                                    VerticalTextAlignment="Center"
                                                    Grid.Column="2"/>
-                                            <Label Text="{Binding CourseStartDate, StringFormat='{0:MM/dd/yyyy}'}"
+                                            <Label Text="{Binding CourseEndDate, StringFormat='{0:MM/dd/yyyy}'}"
                                                    VerticalTextAlignment="Center"
                                                    Grid.Column="3"/>
                                             <Label Text="{Binding CourseStatus}"

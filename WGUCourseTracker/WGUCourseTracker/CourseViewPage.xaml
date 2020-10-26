@@ -41,7 +41,7 @@
                             Placeholder="Course Name"/>
                         <Picker x:Name="Status"
                                 WidthRequest="150"
-                            Title="{Binding CourseStatus}"
+                            Title="{Binding CourseStatus, Mode=TwoWay}"
                             TitleColor="Green"
                             HorizontalOptions="EndAndExpand"
                             VerticalOptions="End">
@@ -64,8 +64,9 @@
                             FontSize="Small"
                             VerticalOptions="Center"
                             Padding="5,0,0,0"/>
-                        <DatePicker Date="{Binding CourseStartDate, Mode=TwoWay}"
-                                FontSize="Small" VerticalOptions="Center">
+                        <DatePicker x:Name="startDatePicker"
+                                    Date="{Binding CourseStartDate, Mode=TwoWay}"
+                                    FontSize="Small" VerticalOptions="Center">
                         </DatePicker>
                     </StackLayout>
 
@@ -75,7 +76,9 @@
                             FontSize="Small"
                             VerticalOptions="Center" 
                             Padding="5,0,0,0"/>
-                        <DatePicker Date="{Binding CourseEndDate, Mode=TwoWay}"
+                        <DatePicker x:Name="endDatePicker"
+                            Date="{Binding CourseEndDate,
+                            Mode=TwoWay}"
                             FontSize="Small" 
                             VerticalOptions="Center"></DatePicker>
                     </StackLayout>
@@ -100,7 +103,7 @@
                             </Image>
                         </StackLayout>
 
-                        <Frame HeightRequest="150"
+                        <Frame HeightRequest="100"
                             Style="{StaticResource bg}">
                             <StackLayout  x:Name="instructorStackLayout">
                                 <Label Text="{Binding InstructorName,Mode=TwoWay}"/>
@@ -134,7 +137,7 @@
                             </Image>
                         </StackLayout>
                         <StackLayout>
-                            <Frame HeightRequest="150"
+                            <Frame HeightRequest="100"
                                 Style="{StaticResource bg}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal">
@@ -144,10 +147,13 @@
                                             HorizontalOptions ="EndAndExpand"
                                             VerticalTextAlignment="Center"
                                             FontSize="Small"/>
-                                    </StackLayout >
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
                                     <Label Text="Due Date:"/>
                                     <Label x:Name="PADueDate"
-                                        FontSize="Micro"/>
+                                           HorizontalOptions="EndAndExpand"
+                                        FontSize="Small"/>
+                                    </StackLayout>
                                     <BoxView HorizontalOptions="FillAndExpand" 
                                         HeightRequest="1" 
                                         Color="#11213d"/>
@@ -158,10 +164,13 @@
                                             HorizontalOptions ="EndAndExpand"
                                             FontSize="Small"/>
                                     </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
                                     <Label Text="Due Date:"
-                                        FontSize="Micro"/>
+                                        FontSize="Small"/>
                                     <Label x:Name="OADueDate"
-                                        FontSize="Micro"/>
+                                           HorizontalOptions="EndAndExpand"
+                                        FontSize="Small"/>
+                                    </StackLayout>
 
                                 </StackLayout>
                             </Frame>

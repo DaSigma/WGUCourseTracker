@@ -82,7 +82,8 @@ namespace WGUCourseTracker
             
             if (selectedCourse != null)
             {
-                await Navigation.PushAsync(new CourseViewPage { BindingContext = selectedCourse as Course });
+                await Navigation.PushAsync(new CourseViewPage(course) { BindingContext = selectedCourse as Course });
+                //await Navigation.PushAsync(new CourseViewPage { BindingContext = selectedCourse as Course });
             }
             else
             {
