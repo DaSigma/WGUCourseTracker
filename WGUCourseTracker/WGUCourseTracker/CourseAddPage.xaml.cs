@@ -79,9 +79,18 @@ namespace WGUCourseTracker
         }
         private bool DateCheck()
         {
+
+
             if (startDatePicker.Date < endDatePicker.Date)
             {
-                return true;
+                if (term.TermStartDate <= startDatePicker.Date && term.TermEndDate >= endDatePicker.Date)
+                {
+                    return true;
+                }
+                DisplayAlert("Error!", $"Course should be between term Start " +
+                    $"({term.TermStartDate.ToString("MMM dd, yyyy")}) and End ({term.TermEndDate.ToString("MMM dd, yyyy")}) dates!", "OK");
+                return false;
+
             }
             DisplayAlert("Error!", "Start Date must be greater than End Date!", "OK");
             return false;

@@ -1,6 +1,8 @@
-﻿using SQLite;
+﻿using Plugin.LocalNotifications;
+using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -18,6 +20,7 @@ namespace WGUCourseTracker
     {
         Term term;
         Course course;
+
         public TermViewPage()
         {
             InitializeComponent();
@@ -29,6 +32,7 @@ namespace WGUCourseTracker
         {
             base.OnAppearing();
             courseListView.SelectedItem = null;
+
 
             using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
@@ -46,6 +50,8 @@ namespace WGUCourseTracker
                 courseListView.ItemsSource = courseList;
             }
 
+
+
         }
         async void SaveTerm_Clicked(object sender, EventArgs e)
         {
@@ -54,7 +60,7 @@ namespace WGUCourseTracker
             {
                 con.CreateTable<Term>();
 
-                if (startDatePicker.Date < endDatePicker.Date && termEntry != null)
+                if (DateCheck() && NullCheck())
                 {
                     con.Update(term);
                     await DisplayAlert("Success!", $"{term.TermName} Saved", "Ok");
@@ -64,7 +70,7 @@ namespace WGUCourseTracker
                 }
                 else
                 {
-                    await DisplayAlert("Error", "Term not Created", "Ok");
+                    return;
                 }
             }
         }
@@ -79,7 +85,7 @@ namespace WGUCourseTracker
         async void EditCourse_Clicked(object sender, EventArgs e)
         {
             var selectedCourse = (Course)courseListView.SelectedItem;
-            
+
             if (selectedCourse != null)
             {
                 await Navigation.PushAsync(new CourseViewPage(course) { BindingContext = selectedCourse as Course });
@@ -118,6 +124,26 @@ namespace WGUCourseTracker
             }
             
         }
+        private bool NullCheck()
+        {
+            if (!String.IsNullOrEmpty(termEntry.Text))
+            {
+                return true;
+            }
+            DisplayAlert("Error!", "Please fill in all information!", "Ok");
+            return false;
+        }
+        private bool DateCheck()
+        {
+            if (startDatePicker.Date < endDatePicker.Date)
+            {
+                return true;
+            }
+            DisplayAlert("Error!", "Start Date must be greater than End Date!", "OK");
+            return false;
+        }
+
+
 
     }
 }

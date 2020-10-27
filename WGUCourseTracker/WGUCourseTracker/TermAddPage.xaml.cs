@@ -33,7 +33,7 @@ namespace WGUCourseTracker
             {
                 con.CreateTable<Term>();
 
-                if (startDatePicker.Date < endDatePicker.Date && termEntry != null)
+                if (DateCheck() && NullCheck())
                 {
                     con.Insert(term);
                     await DisplayAlert("Success!", $"{term.TermName} Created", "Ok");
@@ -43,9 +43,28 @@ namespace WGUCourseTracker
                 }
                 else
                 {
-                    await DisplayAlert("Failure", "Term not Created", "Ok");
+                    return;
                 }
             }
+        }
+
+        private bool NullCheck()
+        {
+            if (!String.IsNullOrEmpty(termEntry.Text))
+            {
+                return true;
+            }
+            DisplayAlert("Error!", "Please fill in all information!", "Ok");
+            return false;
+        }
+        private bool DateCheck()
+        {
+            if (startDatePicker.Date < endDatePicker.Date)
+            {
+                return true;
+            }
+            DisplayAlert("Error!", "Start Date must be greater than End Date!", "OK");
+            return false;
         }
 
     }

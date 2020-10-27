@@ -6,11 +6,15 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save"
                      Clicked="SaveAssessment_Clicked"/>
+        <ToolbarItem Text="Delete"
+                     Clicked="Delete_Clicked">
+
+        </ToolbarItem>
 
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label 
+            <Label  x:Name="assessmentLabel"
                     Style="{StaticResource Header1}"
                     Text="Edit Assessment" 
                     FontSize="Title" 

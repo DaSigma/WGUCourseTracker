@@ -37,7 +37,7 @@
                         <Entry x:Name="courseNameEntry"
                                Text="{Binding CourseName, Mode=TwoWay}"
                             VerticalOptions="EndAndExpand"
-                               WidthRequest="150"
+                               WidthRequest="160"
                             Placeholder="Course Name"/>
                         <Picker x:Name="Status"
                                 WidthRequest="150"
@@ -102,13 +102,42 @@
                                 </Image.GestureRecognizers>
                             </Image>
                         </StackLayout>
-
-                        <Frame HeightRequest="100"
-                            Style="{StaticResource bg}">
+                        <StackLayout>
+                        <Frame Style="{StaticResource bg}">
                             <StackLayout  x:Name="instructorStackLayout">
-                                <Label Text="{Binding InstructorName,Mode=TwoWay}"/>
-                                <Label Text="{Binding InstructorPhone}"/>
-                                <Label Text="{Binding InstructorEmail}"/>
+                                    <Grid HorizontalOptions="CenterAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Text="Name:"
+                                               HorizontalTextAlignment="End"
+                                                   Grid.Column="0"
+                                                   Grid.Row="0"/>
+                                        <Label x:Name="instructorNameLabel"
+                                                   Grid.Column="1"
+                                                   Grid.Row="0"
+                                            Text="{Binding InstructorName,Mode=TwoWay}"/>
+                                        <Label Text="Phone:"
+                                               HorizontalTextAlignment="End"
+                                                   Grid.Column="0"
+                                                   Grid.Row="1"/>
+                                        <Label x:Name="instructorPhoneLabel"
+                                                   Grid.Column="1"
+                                                   Grid.Row="1"
+                                            Text="{Binding InstructorPhone, Mode=TwoWay}"/>
+                                        <Label Text="Email:"
+                                               HorizontalTextAlignment="End"
+                                                   Grid.Column="0"
+                                                   Grid.Row="2"/>
+                                        <Label x:Name="instructorEmailLabel"
+                                                   Grid.Column="1"
+                                                   Grid.Row="2"
+                                            Text="{Binding InstructorEmail}"/>
+                                    </Grid>
+
                             </StackLayout>
                         </Frame>
                     </StackLayout>
@@ -118,14 +147,6 @@
                             <Label Text="Assessments:"
                                    HorizontalOptions="StartAndExpand"
                             Style="{StaticResource Header2}"/>
-                            <Image Source="{local:ImageResource WGUCourseTracker.Assets.Images.delete.png}"
-                                   HorizontalOptions="EndAndExpand"
-                                   WidthRequest="30">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="AssessmentDelete_Tapped"
-                                                          NumberOfTapsRequired="1" />
-                            </Image.GestureRecognizers>
-                            </Image>
                             <Image Source="{local:ImageResource WGUCourseTracker.Assets.Images.edit.png}"
                                    Margin="0,0,10,0"
                                    WidthRequest="30"
@@ -137,20 +158,22 @@
                             </Image>
                         </StackLayout>
                         <StackLayout>
-                            <Frame HeightRequest="100"
+                            <Frame 
                                 Style="{StaticResource bg}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Perf:"
-                                               FontSize="Small"/>
-                                        <Label x:Name="PAName"
+                                        <Label Text="Performance:"
+                                               
+                                               FontSize="Micro"/>
+                                        <Label x:Name="PANameLabel"
                                             HorizontalOptions ="EndAndExpand"
+                                            HorizontalTextAlignment="End"
                                             VerticalTextAlignment="Center"
                                             FontSize="Small"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                     <Label Text="Due Date:"/>
-                                    <Label x:Name="PADueDate"
+                                    <Label x:Name="PADueDateLabel"
                                            HorizontalOptions="EndAndExpand"
                                         FontSize="Small"/>
                                     </StackLayout>
@@ -158,22 +181,25 @@
                                         HeightRequest="1" 
                                         Color="#11213d"/>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Obj:"
-                                            FontSize="Small"/>
-                                        <Label x:Name="OAName"
+                                        <Label Text="Objective:"
+                                               HorizontalOptions="StartAndExpand"
+                                               HorizontalTextAlignment="Start"
+                                            FontSize="Micro"/>
+                                        <Label x:Name="OANameLabel"
                                             HorizontalOptions ="EndAndExpand"
                                             FontSize="Small"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                     <Label Text="Due Date:"
                                         FontSize="Small"/>
-                                    <Label x:Name="OADueDate"
+                                    <Label x:Name="OADueDateLabel"
                                            HorizontalOptions="EndAndExpand"
                                         FontSize="Small"/>
                                     </StackLayout>
 
                                 </StackLayout>
                             </Frame>
+                            </StackLayout>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>

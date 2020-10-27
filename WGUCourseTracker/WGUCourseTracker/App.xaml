@@ -9,13 +9,14 @@
         <ResourceDictionary>
             <ControlTemplate x:Key="Template">
                 <StackLayout>
-                        <Image
+                    <StackLayout>
+                    <Image
                             Source="{local:ImageResource WGUCourseTracker.Assets.Images.WGUlogo.png}"
                             x:Name="WGUlogo"
                             Margin="20,20,20,0"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Start"
-                            HeightRequest="50"
+                            HeightRequest="25"
                             WidthRequest="200"/>
 
                     <Label
@@ -24,6 +25,7 @@
                         Text="Course Tracker"
                         TextColor="#11213d"
                         FontSize="Small"/>
+                    </StackLayout>
                     <ContentPresenter VerticalOptions="FillAndExpand" />
                     <Label                          
                         HorizontalTextAlignment="End"

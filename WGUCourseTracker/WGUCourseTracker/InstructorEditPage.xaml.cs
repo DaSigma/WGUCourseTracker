@@ -51,8 +51,7 @@ namespace WGUCourseTracker
 
                 con.Update(currentCourse);
                 Page new1 = new CourseViewPage(currentCourse);
-                new1.BindingContext = currentCourse as Course;
-                Navigation.InsertPageBefore(new1, this);
+                //new1.BindingContext = currentCourse as Course;
                 await Navigation.PopAsync();
 
             }
