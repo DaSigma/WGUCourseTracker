@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WGUCourseTracker.Android", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WGUCourseTracker.iOS", "WGUCourseTracker\WGUCourseTracker.iOS\WGUCourseTracker.iOS.csproj", "{674E581E-8195-4C11-8993-D16B348187CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WGUCourseTracker", "WGUCourseTracker\WGUCourseTracker\WGUCourseTracker.csproj", "{583A8AF3-3FF2-419C-AC6A-55B6BAB9AD05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WGUCourseTracker", "WGUCourseTracker\WGUCourseTracker\WGUCourseTracker.csproj", "{583A8AF3-3FF2-419C-AC6A-55B6BAB9AD05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

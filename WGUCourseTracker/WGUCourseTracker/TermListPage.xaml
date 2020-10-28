@@ -6,25 +6,25 @@
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add"
-                      Clicked="AddTerm_Clicked"/>
+                     Clicked="AddTerm_Clicked"/>
         <ToolbarItem Text="View"
-                      Clicked="EditTerm_Clicked"/>
+                     Clicked="EditTerm_Clicked"/>
         <ToolbarItem Text="Delete"
                      Clicked="DeleteButton_Clicked"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
         <StackLayout Padding="5,0,5,0">
-            <Label 
-            Style="{StaticResource Header1}"
-            Text="Terms View" 
-            FontSize="Large" 
-            Padding="10,10,0,10" 
-            FontAttributes="Bold"/>
+            <Label Style="{StaticResource Header1}"
+                   Text="Terms View" 
+                   FontSize="Large" 
+                   Padding="10,10,0,10" 
+                   FontAttributes="Bold"/>
             <StackLayout>
                 <Label Text="Terms:"/>
                 <Frame Style="{StaticResource bg}"
-                       WidthRequest="100" HeightRequest="350">
+                       WidthRequest="100" 
+                       HeightRequest="350">
                     <StackLayout>
                         <ListView x:Name="termsListView">
                             <ListView.ItemTemplate>
@@ -32,17 +32,17 @@
                                     <ViewCell>
                                         <StackLayout>
                                             <Label Text= "{Binding TermName}"
-                                                FontAttributes="Bold"/>
+                                                   FontAttributes="Bold"/>
                                             <Label VerticalTextAlignment="Center">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text= "{Binding TermStartDate,
-                                                        StringFormat='{0:MMM dd, yyyy}'}"
-                                                        FontSize="Small" />
+                                                            StringFormat='{0:MMM dd, yyyy}'}"
+                                                              FontSize="Small" />
                                                         <Span Text=" to "/>
                                                         <Span Text="{Binding TermEndDate,
-                                                        StringFormat='{0:MMM dd, yyyy}'}"
-                                                        FontSize="Small"/>
+                                                            StringFormat='{0:MMM dd, yyyy}'}"
+                                                              FontSize="Small"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -53,6 +53,11 @@
                         </ListView>
                     </StackLayout>
                 </Frame>
+                <Button Text="Evaluate"
+                        HorizontalOptions="End"
+                        WidthRequest="100"
+                        Clicked="Evaluate_Button_Clicked"/>
+                <Label Text="* Press evaluate button to load temporary evaluation data."/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

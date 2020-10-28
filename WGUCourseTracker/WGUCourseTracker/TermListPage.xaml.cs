@@ -13,7 +13,6 @@ using Xamarin.Forms.Xaml;
 
 namespace WGUCourseTracker
 {
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
     public partial class TermListPage : ContentPage
@@ -21,11 +20,11 @@ namespace WGUCourseTracker
         ObservableCollection<Course> courses;
         ObservableCollection<Assessment> assessments;
         bool start = true;
+        int notifynumber = 0;
 
         public TermListPage()
         {
-            InitializeComponent();
-            
+            InitializeComponent();          
         }
         protected override void OnAppearing()
         {
@@ -34,7 +33,12 @@ namespace WGUCourseTracker
 
             using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
+                //con.Execute("Drop table if exists Assessment");
+                //con.Execute("Drop table if exists Course");
+
                 con.CreateTable<Term>();
+                con.CreateTable<Course>();
+                con.CreateTable<Assessment>();
 
                 var termList = con.Table<Term>().ToList();
                 termsListView.ItemsSource = termList;
@@ -46,9 +50,9 @@ namespace WGUCourseTracker
                 con.CreateTable<Assessment>();
                 var asssessmentTable = con.Table<Assessment>().ToList();
                 assessments = new ObservableCollection<Assessment>(asssessmentTable);
-                
+  
             }
-
+            
             if (start)
             {
                 start = false;
@@ -57,25 +61,23 @@ namespace WGUCourseTracker
             }
 
         }
-        private void AddTerm_Clicked(object sender, EventArgs e)
+        async void AddTerm_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new TermAddPage());
+            await Navigation.PushAsync(new TermAddPage());
         }
 
         async void EditTerm_Clicked(object sender, EventArgs e)
-        {
-            
+        {         
             if (termsListView.SelectedItem != null)
             {
                 var selectedTerm = (Term)termsListView.SelectedItem;
 
-                await Navigation.PushAsync(new TermViewPage { BindingContext = selectedTerm as Term });
+                await Navigation.PushAsync(new TermViewPage(selectedTerm) { BindingContext = selectedTerm as Term });
             }
             else
             {
                 await DisplayAlert("Error!", "Please Select a Term to View/Edit!", "Ok");
             }
-
         }
 
         async void DeleteButton_Clicked(object sender, EventArgs e)
@@ -86,33 +88,42 @@ namespace WGUCourseTracker
             {
                 using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
                 {
-                    bool deleteTerm = await DisplayAlert("Confirm!", $"Do you wish to delete '{selectedTerm.TermName}'?", "Yes", "No");
-                    if (deleteTerm)
+                    
+                    var termCourses = con.Query<Course>($"Select * from Course where TermID = {selectedTerm.TermID}");
+                    if(termCourses.Count == 0)
                     {
-                        con.Execute($"Delete from Term Where {selectedTerm.TermID} = TermID ");
-                        Page new1 = new TermListPage();
-                        Navigation.InsertPageBefore(new1, this);
+                        bool deleteTerm = await DisplayAlert("Confirm!", $"Do you wish to delete '{selectedTerm.TermName}'?", "Yes", "No");
+                        if (deleteTerm)
+                        {
+                            con.Execute($"Delete from Term Where {selectedTerm.TermID} = TermID ");
+                            Page new1 = new TermListPage();
+                            Navigation.InsertPageBefore(new1, this);
+                            await Navigation.PopAsync();
+                        }
                         await Navigation.PopAsync();
                     }
-                    await Navigation.PopAsync();
+                    else
+                    {
+                        await DisplayAlert("Unable to Delete!", $"Term has {termCourses.Count} course(s) associated with it!", "Ok");
+                    }
+
                 }
             }
             else
             {
                 await DisplayAlert("Error!", "Please Select a Term to Remove!", "Ok");
-            }
-            
-
+            }          
         }
+
         private void CourseStartNotify()
         {
-            int notifynumber = 0;
             foreach (Course course in courses)
             {
                 notifynumber++;
 
                 if (course.CourseStartDate == DateTime.Today)
                 {
+                   
                     CrossLocalNotifications.Current.Show("Course Start Reminder", $"{course.CourseName} begins today.", notifynumber);
                 }
 
@@ -121,22 +132,28 @@ namespace WGUCourseTracker
                     CrossLocalNotifications.Current.Show("Course Ending Reminder", $"{course.CourseName} finishes today.",notifynumber);
                 }
             }
-
         }
 
         private void AssessmentStartNotify()
         {
-            int notifynumber = 0;
             foreach (Assessment assessment in assessments)
             {
                 notifynumber++;
-
-                if (assessment.AssessmentDueDate == DateTime.Today)
-                {
-                    CrossLocalNotifications.Current.Show("Assessment Start Reminder", $"{assessment.AssessmentName} begins today.", notifynumber);
+                if (assessment.notify)
+                {                
+                    CrossLocalNotifications.Current.Show("Assessment Start Reminder", $"{assessment.AssessmentName} " +
+                        $"scheduled for {assessment.AssessmentDueDate.ToString("MMM dd, yyyy")}.", notifynumber);
                 }
-            }
 
+            }
+        }
+
+        async void  Evaluate_Button_Clicked(object sender, EventArgs e)
+        {
+            Evaluate.AddData();
+            Page new1 = new TermListPage();
+            Navigation.InsertPageBefore(new1, this);
+            await Navigation.PopAsync();
         }
     }
 }

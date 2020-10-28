@@ -12,8 +12,6 @@ namespace WGUCourseTracker
             InitializeComponent();
 
             MainPage = new NavigationPage(new TermListPage());
-            //MainPage = new NavigationPage(new TermListPage());
-            //TermViewPage = new TermViewPage();
         }
 
         public App(string dbLocation)

@@ -18,8 +18,7 @@ namespace WGUCourseTracker
         public AssessmentViewPage(Course course)
         {
             InitializeComponent();
-            currentCourse = course;
-            
+            currentCourse = course;           
         }
 
         protected override void OnAppearing()
@@ -42,14 +41,9 @@ namespace WGUCourseTracker
                     else
                     {
                         TypePicker.Items.Add("Objective");
-
                     }
                 }
-
-
             }
-
-
         }
 
         async void SaveAssessment_Clicked(object sender, EventArgs e)
@@ -68,14 +62,12 @@ namespace WGUCourseTracker
                     assessment.AssessmentDueDate = DueDatePicker.Date;
                     con.Update(assessment);
                     await Navigation.PopAsync();
-
                 }
             }
             else
             {
                 await DisplayAlert("Action needed!", "Select Assessment type to Edit.", "Ok");
             }
-
         }
 
         private void TypePicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,7 +82,6 @@ namespace WGUCourseTracker
 
                 AssessmentName.Text = assessment.AssessmentName;
                 DueDatePicker.Date = assessment.AssessmentDueDate;
-
             }
         }
 
@@ -125,8 +116,6 @@ namespace WGUCourseTracker
             {
                 await DisplayAlert("Action needed!", "Select Assessment type to Delete.", "Ok");
             }
-
         }
-
     }
 }

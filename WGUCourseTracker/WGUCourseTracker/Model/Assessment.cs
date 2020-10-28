@@ -12,6 +12,7 @@ namespace WGUCourseTracker.Model
         public string AssessmentName { get; set; }
         public string AssessmentType { get; set; }
         public DateTime AssessmentDueDate { get; set; }
+        public bool notify { get; set; }
         public int CourseID { get; set; }
     }
 }

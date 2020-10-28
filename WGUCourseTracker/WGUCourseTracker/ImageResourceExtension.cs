@@ -10,8 +10,7 @@ namespace WGUCourseTracker
     [ContentProperty(nameof(Source))]
 
     class ImageResourceExtension : IMarkupExtension
-    {
-        
+    {        
         public string Source { get; set; }
          
         public object ProvideValue(IServiceProvider serviceProvider)

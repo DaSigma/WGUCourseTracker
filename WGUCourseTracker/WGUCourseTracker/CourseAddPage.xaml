@@ -9,27 +9,25 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout x:Name="mainStackLayout" Padding="5, 20,5,5">
+            <StackLayout x:Name="mainStackLayout" 
+                         Padding="5, 20,5,5">
                 <StackLayout Orientation="Horizontal">
-                    <Label 
-                    Style="{StaticResource Header1}"
-                    Text="Add Course" 
-                    FontSize="Title" 
-                    Padding="5,0,0,0" 
-                    FontAttributes="Bold"/>
-                <Label
-                    HorizontalOptions="EndAndExpand"
-                    VerticalOptions="Center"
-                    FontSize="Medium"
-                    FontAttributes="Bold"
-                    Text="{Binding TermName, StringFormat= 'Add Course to {0}'}"/>
-                 </StackLayout>
-
+                    <Label Text="Add Course" 
+                           Style="{StaticResource Header1}"           
+                           FontSize="Title" 
+                           Padding="5,0,0,0" 
+                           FontAttributes="Bold"/>
+                    <Label Text="{Binding TermName,
+                        StringFormat= 'Add Course to {0}'}"
+                           HorizontalOptions="EndAndExpand"
+                           VerticalOptions="Center"
+                           FontSize="Medium"
+                           FontAttributes="Bold"/>
+                </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <StackLayout
-                        Padding="0,0,5,0"
-                        Orientation="Horizontal" 
-                        HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="0,0,5,0"
+                                 Orientation="Horizontal" 
+                                 HorizontalOptions="FillAndExpand">
                         <Entry x:Name="courseEntry"
                                WidthRequest="150"
                                VerticalOptions="End"
@@ -50,16 +48,14 @@
                     </StackLayout>
                 </StackLayout>
 
-                <StackLayout 
-                    Orientation="Horizontal"
-                    Padding="0,0,0,5">
+                <StackLayout Orientation="Horizontal"
+                             Padding="0,0,0,5">
                     <StackLayout Orientation="Horizontal">
-                        <Label 
-                            FontSize="Small"
-                            VerticalOptions="Center"
-                            x:Name="startDateLabel" 
-                            Text="Start Date:" 
-                            Padding="5,0,0,0"/>
+                        <Label x:Name="startDateLabel"
+                               Text="Start Date:" 
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               Padding="5,0,0,0"/>
                         <DatePicker x:Name="startDatePicker"
                                     Date="{Binding CourseStartDate}"
                                     FontSize="Small" 
@@ -67,26 +63,25 @@
                         </DatePicker>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" >
-                        <Label
-                            FontSize="Small"
-                            VerticalOptions="Center"
-                            x:Name="endDateLabel" 
-                            Text=" Expected End:" 
-                            Padding="5,0,0,0"/>
+                        <Label x:Name="endDateLabel" 
+                               Text=" Expected End:" 
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               Padding="5,0,0,0"/>
                         <DatePicker x:Name="endDatePicker"
                                     Date="{Binding CourseEndDate}"
                                     FontSize="Small" 
                                     VerticalOptions="Center">
                         </DatePicker>
                     </StackLayout>
-                    
-
                 </StackLayout>
-                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Color="#11213d"/>
+                <BoxView HorizontalOptions="FillAndExpand" 
+                         HeightRequest="2" 
+                         Color="#11213d"/>
                 <StackLayout HorizontalOptions="Start"
                              WidthRequest="200">
                 <Label Style="{StaticResource Header2}"
-                            Text="Instructor Info:"/>
+                       Text="Instructor Info:"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -110,7 +105,9 @@
                                Placeholder="Enter Email"/>
                     </Grid>
                 </StackLayout>
-                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Color="#11213d"/>
+                <BoxView HorizontalOptions="FillAndExpand" 
+                         HeightRequest="2" 
+                         Color="#11213d"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

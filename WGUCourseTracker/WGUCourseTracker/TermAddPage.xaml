@@ -10,43 +10,42 @@
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-    <StackLayout x:Name="mainStackLayout" Padding="5, 20,5,5">
-
-        <Label 
-            Style="{StaticResource Header1}"
-            Text="Add Term" 
-            FontSize="Title" 
-            Padding="10,10,0,10" 
-            FontAttributes="Bold"/>
-
-        <StackLayout Orientation="Horizontal">
-            <Label 
-                VerticalOptions="End"
-                x:Name="termNameLabel" 
-                Text="Term:" 
-                Padding="20,0,30,0"/>
+        <StackLayout x:Name="mainStackLayout" 
+                 Padding="5, 20,5,5">
+            <Label Style="{StaticResource Header1}"
+                Text="Add Term" 
+                FontSize="Title" 
+                Padding="10,10,0,10" 
+                FontAttributes="Bold"/>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="termNameLabel" 
+                       VerticalOptions="End"
+                       Text="Term:" 
+                       Padding="20,0,30,0"/>
             <Editor x:Name="termEntry"
-                   Text="{Binding TermName}"
-                VerticalOptions="End"
-                Placeholder="Term Name"/>
-        </StackLayout>
+                    Text="{Binding TermName}"
+                    VerticalOptions="End"
+                    Placeholder="Term Name"/>
+            </StackLayout>
 
-        <StackLayout Orientation="Horizontal">
-            <Label 
-                VerticalOptions="End"
-                x:Name="startDateLabel" 
-                Text="Start Date:" 
-                Padding="20,0,0,0"/>
-            <DatePicker x:Name="startDatePicker" VerticalOptions="End"></DatePicker>
-        </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="startDateLabel"
+                    VerticalOptions="End"      
+                    Text="Start Date:" 
+                    Padding="20,0,0,0"/>
+                <DatePicker x:Name="startDatePicker" 
+                            VerticalOptions="End">
+                </DatePicker>
+            </StackLayout>
 
             <StackLayout Orientation="Horizontal" >
-                <Label
-                VerticalOptions="End"
-                x:Name="endDateLabel" 
-                Text="End Date:" 
-                Padding="20,0,8,0"/>
-                <DatePicker x:Name="endDatePicker" VerticalOptions="End"></DatePicker>
+                <Label x:Name="endDateLabel" 
+                       Text="End Date:" 
+                       VerticalOptions="End"
+                       Padding="20,0,8,0"/>
+                <DatePicker x:Name="endDatePicker" 
+                            VerticalOptions="End">
+                </DatePicker>
             </StackLayout>
         </StackLayout>
     </ScrollView>

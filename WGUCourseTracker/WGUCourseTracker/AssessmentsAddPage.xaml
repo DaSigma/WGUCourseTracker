@@ -6,20 +6,18 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save"
                      Clicked="SaveAssessment_Clicked"/>
-
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label 
-                    Style="{StaticResource Header1}"
-                    Text="Add Assessment" 
-                    FontSize="Title" 
-                    Padding="5,0,0,0" 
-                    FontAttributes="Bold"/>
+            <Label Text="Add Assessment" 
+                   Style="{StaticResource Header1}" 
+                   FontSize="Title" 
+                   Padding="5,0,0,0" 
+                   FontAttributes="Bold"/>
             <Picker x:Name="TypePicker"
-                Title="Assessment Type"
-                            TitleColor="Black"
-                            VerticalOptions="End">
+                    Title="Assessment Type"
+                    TitleColor="Black"
+                    VerticalOptions="End">
                 <Picker.Items>
                     <x:String>Performance</x:String>
                     <x:String>Objective</x:String>
@@ -27,15 +25,12 @@
             </Picker>
             <Entry x:Name="AssessmentName"
                    Placeholder="Assessment Name"/>
-            <StackLayout
-                Padding="5,0,0,0"
-                Orientation="Horizontal">
-                <Label 
-                    VerticalTextAlignment="Center"
-                    Text="Due Date"/>
+            <StackLayout Padding="5,0,0,0"
+                         Orientation="Horizontal">
+                <Label Text="Due Date"
+                       VerticalTextAlignment="Center"/>
                 <DatePicker x:Name="DueDatePicker"/>
-
             </StackLayout>
-            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -33,7 +33,6 @@ namespace WGUCourseTracker
 
                 foreach (Assessment assessment in courseAssessments)
                 {
-
                     if (assessment.AssessmentType == "Performance")
                     {
                         TypePicker.Items.Remove("Performance");
@@ -41,10 +40,8 @@ namespace WGUCourseTracker
                     else
                     {
                         TypePicker.Items.Remove("Objective");
-
                     }
                 }
-
             }
         }
             async void SaveAssessment_Clicked(object sender, EventArgs e)
@@ -65,7 +62,6 @@ namespace WGUCourseTracker
 
                 con.Insert(assessment);
                 await Navigation.PopAsync();
-
                 }
             }
         }

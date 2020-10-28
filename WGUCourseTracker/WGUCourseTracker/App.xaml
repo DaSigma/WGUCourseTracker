@@ -3,64 +3,54 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WGUCourseTracker"
              x:Class="WGUCourseTracker.App">
-    
+
     <Application.Resources>
-        
         <ResourceDictionary>
             <ControlTemplate x:Key="Template">
                 <StackLayout>
                     <StackLayout>
-                    <Image
-                            Source="{local:ImageResource WGUCourseTracker.Assets.Images.WGUlogo.png}"
-                            x:Name="WGUlogo"
-                            Margin="20,20,20,0"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="Start"
-                            HeightRequest="25"
-                            WidthRequest="200"/>
-
-                    <Label
-                        FontAttributes="Bold"
-                        HorizontalOptions="Center"
-                        Text="Course Tracker"
-                        TextColor="#11213d"
-                        FontSize="Small"/>
+                        <Image x:Name="WGUlogo"                              
+                               Source="{local:ImageResource WGUCourseTracker.Assets.Images.WGUlogo.png}"                           
+                               Margin="20,20,20,0"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="Start"
+                               HeightRequest="25"
+                               WidthRequest="200"/>
+                        <Label Text="Course Tracker"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"                        
+                               TextColor="#11213d"
+                               FontSize="Small"/>
                     </StackLayout>
                     <ContentPresenter VerticalOptions="FillAndExpand" />
-                    <Label                          
-                        HorizontalTextAlignment="End"
-                        Text="@FCE LLC. 2020"
-                        FontSize="10"
-                        Background="#11213d"
-                        TextColor="White"
-                        VerticalOptions="End"/>
+                    <Label Text="@FCE LLC. 2020"
+                           HorizontalTextAlignment="End"
+                           FontSize="10"
+                           Background="#11213d"
+                           TextColor="White"
+                           VerticalOptions="End"/>
                 </StackLayout>
             </ControlTemplate>
-            <Style 
-                TargetType="Label" 
-                x:Key="Header1">
-                <Setter 
-                    Property="TextColor" 
-                    Value="#11213d"/>
-                <Setter 
-                    Property="FontSize"
-                    Value="Title"/>
+            <Style x:Key="Header1"
+                   TargetType="Label" >
+                <Setter Property="TextColor" 
+                        Value="#11213d"/>
+                <Setter Property="FontSize"
+                        Value="Title"/>
             </Style>
-            <Style TargetType="Label" x:Key="Header2">
-                <Setter Property="TextColor" Value="#11213d"/>
+            <Style x:Key="Header2"
+                   TargetType="Label" >
+                <Setter Property="TextColor" 
+                        Value="#11213d"/>
             </Style>
             <Style TargetType="Frame"
                    x:Key="bg">
-                <Setter
-                       Property="BackgroundColor"
-                       Value="#d8e2f2"/>
-                <Setter
-                    Property="BorderColor"
-                    Value="Black"/>
-                <Setter
-                    Property="CornerRadius"
-                    Value="5"/>
-
+                <Setter Property="BackgroundColor"
+                        Value="#d8e2f2"/>
+                <Setter Property="BorderColor"
+                        Value="Black"/>
+                <Setter Property="CornerRadius"
+                        Value="5"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

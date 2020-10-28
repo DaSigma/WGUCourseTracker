@@ -9,12 +9,11 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label 
-                    Style="{StaticResource Header1}"
-                    Text="Edit Instructor" 
-                    FontSize="Title" 
-                    Padding="5,0,0,0" 
-                    FontAttributes="Bold"/>
+            <Label Style="{StaticResource Header1}"
+                   Text="Edit Instructor" 
+                   FontSize="Title" 
+                   Padding="5,0,0,0" 
+                   FontAttributes="Bold"/>
             <Entry x:Name="InstructorName"
                    Placeholder="Name"/>
             <Entry x:Name="InstructorPhone"

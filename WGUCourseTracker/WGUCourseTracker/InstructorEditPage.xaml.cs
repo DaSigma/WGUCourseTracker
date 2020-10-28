@@ -19,7 +19,6 @@ namespace WGUCourseTracker
             InitializeComponent();
             currentCourse = course;
         }
-
         protected override void OnAppearing()
         {
             var courseID = currentCourse.CourseID;
@@ -27,13 +26,11 @@ namespace WGUCourseTracker
 
             using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
             {
-
                 currentCourse = con.FindWithQuery<Course>($"Select * from Course where CourseID = {courseID}");
 
                 InstructorName.Text = currentCourse.InstructorName;
                 InstructorPhone.Text = currentCourse.InstructorPhone;
                 InstructorEmail.Text = currentCourse.InstructorEmail;
-
             }
         }
 
@@ -51,9 +48,7 @@ namespace WGUCourseTracker
 
                 con.Update(currentCourse);
                 Page new1 = new CourseViewPage(currentCourse);
-                //new1.BindingContext = currentCourse as Course;
                 await Navigation.PopAsync();
-
             }
         }
     }

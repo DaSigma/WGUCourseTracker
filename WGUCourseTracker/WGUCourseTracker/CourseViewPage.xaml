@@ -8,43 +8,44 @@
         <ToolbarItem Text="Add Assessment"
                      Clicked="AddAssessment_Clicked"/>
         <ToolbarItem x:Name="saveToolbarItem"
-            Text="Save"
+                     Text="Save"
                      Clicked="SaveCourse_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout x:Name="mainStackLayout" Padding="10, 20,10,5">
+            <StackLayout x:Name="mainStackLayout" 
+                         Padding="10, 20,10,5">
                 <StackLayout Orientation="Horizontal">
-                    <Label 
-                    Style="{StaticResource Header1}"
-                    Text="Course View" 
-                    FontSize="Title" 
-                    Padding="5,0,0,0" 
-                    FontAttributes="Bold"/>
-                <Label
-                    HorizontalOptions="EndAndExpand"
-                    VerticalOptions="Center"
-                    FontSize="Medium"
-                    FontAttributes="Bold"
-                    Text="{Binding TermName, StringFormat= 'Added to {0}'}"/>
+                    <Label Style="{StaticResource Header1}"
+                           Text="Course View" 
+                           FontSize="Title" 
+                           Padding="5,0,0,0" 
+                           FontAttributes="Bold"/>
+                    <Label Text="{Binding TermName, 
+                        StringFormat= 'Added to {0}'}"
+                           HorizontalOptions="EndAndExpand"
+                           VerticalOptions="Center"
+                           FontSize="Medium"
+                           FontAttributes="Bold"/>
                  </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
-                    <StackLayout
-                        Padding="0,0,5,0"
-                        Orientation="Horizontal" 
-                        HorizontalOptions="FillAndExpand">
+                    <StackLayout Padding="0,0,5,0"
+                                 Orientation="Horizontal" 
+                                 HorizontalOptions="FillAndExpand">
                         <Entry x:Name="courseNameEntry"
-                               Text="{Binding CourseName, Mode=TwoWay}"
-                            VerticalOptions="EndAndExpand"
-                               WidthRequest="160"
-                            Placeholder="Course Name"/>
+                               Text="{Binding CourseName, 
+                            Mode=TwoWay}"
+                               VerticalOptions="EndAndExpand"
+                               WidthRequest="170"
+                               Placeholder="Course Name"/>
                         <Picker x:Name="Status"
                                 WidthRequest="150"
-                            Title="{Binding CourseStatus, Mode=TwoWay}"
-                            TitleColor="Green"
-                            HorizontalOptions="EndAndExpand"
-                            VerticalOptions="End">
+                                Title="{Binding CourseStatus,
+                            Mode=TwoWay}"
+                                TitleColor="Green"
+                                HorizontalOptions="EndAndExpand"
+                                VerticalOptions="End">
                             <Picker.Items>
                                 <x:String>Active</x:String>
                                 <x:String>Completed</x:String>
@@ -55,46 +56,48 @@
                     </StackLayout>
                 </StackLayout>
 
-                <StackLayout 
-                    Orientation="Horizontal"
-                    Padding="0,0,0,5">
+                <StackLayout Orientation="Horizontal"
+                             Padding="0,0,0,5">
                     <StackLayout Orientation="Horizontal">
                         <Label x:Name="startDateLabel"  
-                            Text="Start Date:"
-                            FontSize="Small"
-                            VerticalOptions="Center"
-                            Padding="5,0,0,0"/>
+                               Text="Start Date:"
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               Padding="5,0,0,0"/>
                         <DatePicker x:Name="startDatePicker"
-                                    Date="{Binding CourseStartDate, Mode=TwoWay}"
-                                    FontSize="Small" VerticalOptions="Center">
+                                    Date="{Binding CourseStartDate, 
+                                Mode=TwoWay}"
+                                    FontSize="Small" 
+                                    VerticalOptions="Center">
                         </DatePicker>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal">
                         <Label x:Name="endDateLabel"
-                            Text="Expected End Date:" 
-                            FontSize="Small"
-                            VerticalOptions="Center" 
-                            Padding="5,0,0,0"/>
+                               Text="Expected End Date:" 
+                               FontSize="Small"
+                               VerticalOptions="Center" 
+                               Padding="5,0,0,0"/>
                         <DatePicker x:Name="endDatePicker"
-                            Date="{Binding CourseEndDate,
-                            Mode=TwoWay}"
-                            FontSize="Small" 
-                            VerticalOptions="Center"></DatePicker>
+                                    Date="{Binding CourseEndDate,
+                                    Mode=TwoWay}"
+                                    FontSize="Small" 
+                                    VerticalOptions="Center">
+                        </DatePicker>
                     </StackLayout>
-
                 </StackLayout>
+
                 <BoxView HorizontalOptions="FillAndExpand" 
-                    HeightRequest="2" 
-                    Color="#11213d"/>
+                         HeightRequest="2" 
+                         Color="#11213d"/>
                 <StackLayout HorizontalOptions="FillAndExpand"
-                    Orientation="Horizontal">
-                    <StackLayout 
-                            WidthRequest="500">
+                             Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="FillAndExpand">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Instructor Info:"
-                            Style="{StaticResource Header2}"/>
-                            <Image Source="{local:ImageResource WGUCourseTracker.Assets.Images.edit.png}"
+                                   Style="{StaticResource Header2}"/>
+                            <Image Source="{local:ImageResource
+                                WGUCourseTracker.Assets.Images.edit.png}"
                                    HorizontalOptions="EndAndExpand"
                                    WidthRequest="30">
                                 <Image.GestureRecognizers>
@@ -105,49 +108,50 @@
                         <StackLayout>
                         <Frame Style="{StaticResource bg}">
                             <StackLayout  x:Name="instructorStackLayout">
-                                    <Grid HorizontalOptions="CenterAndExpand">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Label Text="Name:"
-                                               HorizontalTextAlignment="End"
-                                                   Grid.Column="0"
-                                                   Grid.Row="0"/>
-                                        <Label x:Name="instructorNameLabel"
-                                                   Grid.Column="1"
-                                                   Grid.Row="0"
-                                            Text="{Binding InstructorName,Mode=TwoWay}"/>
-                                        <Label Text="Phone:"
-                                               HorizontalTextAlignment="End"
-                                                   Grid.Column="0"
-                                                   Grid.Row="1"/>
-                                        <Label x:Name="instructorPhoneLabel"
-                                                   Grid.Column="1"
-                                                   Grid.Row="1"
-                                            Text="{Binding InstructorPhone, Mode=TwoWay}"/>
-                                        <Label Text="Email:"
-                                               HorizontalTextAlignment="End"
-                                                   Grid.Column="0"
-                                                   Grid.Row="2"/>
-                                        <Label x:Name="instructorEmailLabel"
-                                                   Grid.Column="1"
-                                                   Grid.Row="2"
+                                <Grid HorizontalOptions="CenterAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="Name:"
+                                            HorizontalTextAlignment="End"
+                                            Grid.Column="0"
+                                            Grid.Row="0"/>
+                                    <Label x:Name="instructorNameLabel"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Text="{Binding InstructorName,
+                                        Mode=TwoWay}"/>
+                                    <Label Text="Phone:"
+                                            HorizontalTextAlignment="End"
+                                            Grid.Column="0"
+                                            Grid.Row="1"/>
+                                    <Label x:Name="instructorPhoneLabel"
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Text="{Binding InstructorPhone,
+                                        Mode=TwoWay}"/>
+                                    <Label Text="Email:"
+                                            HorizontalTextAlignment="End"
+                                            Grid.Column="0"
+                                            Grid.Row="2"/>
+                                    <Label x:Name="instructorEmailLabel"
+                                            Grid.Column="1"
+                                            Grid.Row="2"
                                             Text="{Binding InstructorEmail}"/>
-                                    </Grid>
-
-                            </StackLayout>
+                                </Grid>
+                                </StackLayout>
                         </Frame>
                     </StackLayout>
-                    <StackLayout WidthRequest="500"
-                        Orientation="Vertical">
+                    <StackLayout  Orientation="Vertical">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="Assessments:"
                                    HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource Header2}"/>
-                            <Image Source="{local:ImageResource WGUCourseTracker.Assets.Images.edit.png}"
+                                   Style="{StaticResource Header2}"/>
+                            <Image Source="{local:ImageResource 
+                                WGUCourseTracker.Assets.Images.edit.png}"
                                    Margin="0,0,10,0"
                                    WidthRequest="30"
                                    HorizontalOptions="EndAndExpand">
@@ -162,56 +166,79 @@
                                 Style="{StaticResource bg}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Performance:"
-                                               
+                                        <Label Text="Performance:"                                               
                                                FontSize="Micro"/>
                                         <Label x:Name="PANameLabel"
-                                            HorizontalOptions ="EndAndExpand"
-                                            HorizontalTextAlignment="End"
-                                            VerticalTextAlignment="Center"
-                                            FontSize="Small"/>
+                                               HorizontalOptions ="EndAndExpand"
+                                               HorizontalTextAlignment="End"
+                                               VerticalTextAlignment="Center"
+                                               FontSize="Small"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                     <Label Text="Due Date:"/>
                                     <Label x:Name="PADueDateLabel"
-                                           HorizontalOptions="EndAndExpand"
-                                        FontSize="Small"/>
-                                    </StackLayout>
+                                           HorizontalOptions="Start"
+                                           FontSize="Small"/>
+                                            <Label Text="Notify"
+                                               HorizontalOptions="EndAndExpand"
+                                               FontSize="Small"/>
+                                            <Switch x:Name="PANotificationSwitch"
+                                                    IsEnabled="False"
+                                                    Toggled="PANotificationSwitch_Toggled"
+                                                    HorizontalOptions="End"/>
+                                        </StackLayout>
                                     <BoxView HorizontalOptions="FillAndExpand" 
-                                        HeightRequest="1" 
-                                        Color="#11213d"/>
+                                             HeightRequest="1" 
+                                             Color="#11213d"/>
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="Objective:"
                                                HorizontalOptions="StartAndExpand"
                                                HorizontalTextAlignment="Start"
-                                            FontSize="Micro"/>
+                                               FontSize="Micro"/>
                                         <Label x:Name="OANameLabel"
-                                            HorizontalOptions ="EndAndExpand"
-                                            FontSize="Small"/>
+                                               HorizontalOptions ="EndAndExpand"
+                                               FontSize="Small"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                    <Label Text="Due Date:"
-                                        FontSize="Small"/>
-                                    <Label x:Name="OADueDateLabel"
-                                           HorizontalOptions="EndAndExpand"
-                                        FontSize="Small"/>
-                                    </StackLayout>
-
+                                        <Label Text="Due Date:"
+                                               FontSize="Small"/>
+                                        <Label x:Name="OADueDateLabel"
+                                               HorizontalOptions="Start"
+                                               FontSize="Small"/>
+                                            <Label Text="Notify"
+                                               HorizontalOptions="EndAndExpand"
+                                               FontSize="Small"/>
+                                            <Switch x:Name="OANotificationSwitch"
+                                                    IsEnabled ="False" 
+                                                    Toggled="OANotificationSwitch_Toggled"
+                                                    HorizontalOptions="End"/>
+                                        </StackLayout>
                                 </StackLayout>
                             </Frame>
-                            </StackLayout>
                         </StackLayout>
                     </StackLayout>
+                    </StackLayout>
                 </StackLayout>
-                <Label
-                    Style="{StaticResource Header2}"
-                    Text="Notes:"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{StaticResource Header2}"
+                           Text="Notes:"/>
+                    <Image Source="{local:ImageResource
+                        WGUCourseTracker.Assets.Images.share.png}"
+                           Margin="0,0,10,0"
+                           WidthRequest="30"
+                           HorizontalOptions="EndAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Share_Tapped"
+                                                   NumberOfTapsRequired="1"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
                 <Editor x:Name="notesEditor"
-                    Text ="{Binding CourseNotes, Mode=TwoWay}"                    
-                    HeightRequest="150"
-                    BackgroundColor="LightGray"
-                    FontSize="Small">
-
+                        Text ="{Binding CourseNotes, 
+                    Mode=TwoWay}"                    
+                        HeightRequest="150"
+                        BackgroundColor="LightGray"
+                        FontSize="Small">
                 </Editor>
             </StackLayout>
         </ScrollView>

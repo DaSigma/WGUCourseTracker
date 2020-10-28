@@ -14,58 +14,62 @@
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-        <StackLayout x:Name="mainStackLayout" Padding="5, 20,5,5">
-
-            <Label 
-            Style="{StaticResource Header1}"
-            Text= "Term View"
-            FontSize="Title" 
-            Padding="10,10,0,10" 
-            FontAttributes="Bold"/>
-
+        <StackLayout x:Name="mainStackLayout" 
+                     Padding="5, 20,5,5">
+            <Label Style="{StaticResource Header1}"
+                   Text= "Term View"
+                   FontSize="Title" 
+                   Padding="10,10,0,10" 
+                   FontAttributes="Bold"/>
             <StackLayout Orientation="Horizontal">
-                <Label 
-                VerticalOptions="End"
-                x:Name="termNameLabel" 
-                Text="Term:" 
-                Padding="20,0,30,0"/>
+                <Label x:Name="termNameLabel"
+                       Text="Term:"
+                       VerticalOptions="End"
+                       Padding="20,0,30,0"/>
                 <Editor x:Name="termEntry"
-                        Text="{Binding TermName, Mode=TwoWay}"
+                        Text="{Binding TermName,
+                    Mode=TwoWay}"
                         WidthRequest="150"
                         VerticalOptions="End"
                         Placeholder="Term Name"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
-                <Label 
-                VerticalOptions="End"
-                x:Name="startDateLabel" 
-                Text="Start Date:" 
-                Padding="20,0,0,0"/>
-                <DatePicker Date="{Binding TermStartDate, Mode=TwoWay}" x:Name="startDatePicker" VerticalOptions="End"></DatePicker>
+                <Label x:Name="startDateLabel"
+                       Text="Start Date:" 
+                       VerticalOptions="End"
+                       Padding="20,0,0,0"/>
+                <DatePicker Date="{Binding TermStartDate,
+                    Mode=TwoWay}" 
+                            x:Name="startDatePicker" 
+                            VerticalOptions="End">
+                </DatePicker>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" >
-                <Label
-                VerticalOptions="End"
-                x:Name="endDateLabel" 
-                Text="End Date:" 
-                Padding="20,0,8,0"/>
-                <DatePicker Date="{Binding TermEndDate, Mode=TwoWay}" x:Name="endDatePicker" VerticalOptions="End"></DatePicker>
+                <Label x:Name="endDateLabel" 
+                       Text="End Date:"
+                       VerticalOptions="End"
+                       Padding="20,0,8,0"/>
+                <DatePicker Date="{Binding TermEndDate, 
+                    Mode=TwoWay}" 
+                            x:Name="endDatePicker" 
+                            VerticalOptions="End">
+                </DatePicker>
             </StackLayout>
 
             <StackLayout>
                 <Label Text="Courses:"/>
-                <Frame  
-                Style="{StaticResource bg}"
-                WidthRequest="100" HeightRequest="200">
+                <Frame Style="{StaticResource bg}"
+                       WidthRequest="100" 
+                       HeightRequest="200">
                     <StackLayout x:Name="courseStackLayout"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="CenterAndExpand">
+                                 VerticalOptions="FillAndExpand"
+                                 HorizontalOptions="CenterAndExpand">
                         <ListView ItemsSource="{Binding Course}"
-                            x:Name="courseListView"
-                            HasUnevenRows="True"
-                            SeparatorVisibility="None">
+                                  x:Name="courseListView"
+                                  HasUnevenRows="True"
+                                  SeparatorVisibility="None">
                             <ListView.Header>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -75,25 +79,25 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
                                     <Label Text="Course Name"
-                                                   Grid.Column="0"
-                                                   Grid.Row="0"
-                                                   BackgroundColor="#11213d"
-                                                   TextColor="White"/>
+                                           Grid.Column="0"
+                                           Grid.Row="0"
+                                           BackgroundColor="#11213d"
+                                           TextColor="White"/>
                                     <Label Text="Start Date"
-                                                   Grid.Column="1"
-                                                   Grid.Row="0"
-                                                   BackgroundColor="#11213d"
-                                                   TextColor="White"/>
+                                           Grid.Column="1"
+                                           Grid.Row="0"
+                                           BackgroundColor="#11213d"
+                                           TextColor="White"/>
                                     <Label Text="Expected End"
-                                                   Grid.Column="2"
-                                                   Grid.Row="0"
-                                                   BackgroundColor="#11213d"
-                                                   TextColor="White"/>
+                                           Grid.Column="2"
+                                           Grid.Row="0"
+                                           BackgroundColor="#11213d"
+                                           TextColor="White"/>
                                     <Label Text="Course Name"
-                                                   Grid.Column="3"
-                                                   Grid.Row="0"
-                                                   BackgroundColor="#11213d"
-                                                   TextColor="White"/>
+                                           Grid.Column="3"
+                                           Grid.Row="0"
+                                           BackgroundColor="#11213d"
+                                           TextColor="White"/>
                                 </Grid>
                             </ListView.Header>
                             <ListView.ItemTemplate>
@@ -108,16 +112,26 @@
                                             </Grid.RowDefinitions>
                                             <Label Text="{Binding CourseName}"
                                                    VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Start"
+                                                   FontSize="Small"
                                                    FontAttributes="Bold"
                                                    Grid.Column="1"/>
-                                            <Label Text="{Binding CourseStartDate, StringFormat='{0:MM/dd/yyyy}'}"
+                                            <Label Text="{Binding CourseStartDate, 
+                                                StringFormat='{0:MM/dd/yyyy}'}"
+                                                   HorizontalTextAlignment="Center"
                                                    VerticalTextAlignment="Center"
+                                                   FontSize="Small"
                                                    Grid.Column="2"/>
-                                            <Label Text="{Binding CourseEndDate, StringFormat='{0:MM/dd/yyyy}'}"
+                                            <Label Text="{Binding CourseEndDate, 
+                                                StringFormat='{0:MM/dd/yyyy}'}"
                                                    VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Center"
+                                                   FontSize="Small"
                                                    Grid.Column="3"/>
                                             <Label Text="{Binding CourseStatus}"
                                                    VerticalTextAlignment="Center"
+                                                   HorizontalTextAlignment="Center"
+                                                   FontSize="Small"
                                                    Grid.Column="4"/>
                                         </Grid>
                                     </ViewCell>
@@ -127,7 +141,7 @@
                     </StackLayout>
                 </Frame>
                 <Button Text="Remove Course"
-                    Clicked="DeleteButton_Clicked"/>
+                        Clicked="DeleteButton_Clicked"/>
             </StackLayout>
         </StackLayout>
     </ScrollView>

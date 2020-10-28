@@ -15,10 +15,8 @@ namespace WGUCourseTracker
     {
         public TermAddPage()
         {
-            InitializeComponent();
-            
+            InitializeComponent();           
         }
-
         async void SaveTerm_Clicked(object sender, EventArgs e)
         {
             Term term = new Term()
@@ -26,7 +24,6 @@ namespace WGUCourseTracker
                 TermName = termEntry.Text,
                 TermStartDate = startDatePicker.Date,
                 TermEndDate = endDatePicker.Date
-
             };
 
             using (SQLiteConnection con = new SQLiteConnection(App.DbLocation))
