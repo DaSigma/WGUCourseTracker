@@ -1,4 +1,5 @@
-![Image 1](https://github.com/dasigma/WGUCourseTracker/blob/master/Screenshot_20210226-103555.jpg?raw=true)
+![Image 1](https://github.com/dasigma/WGUCourseTracker/blob/master/Screenshot_20210226-103555.jpg?raw=true) ![Image 1](https://github.com/dasigma/WGUCourseTracker/blob/master/Screenshot_20210226-103555.jpg?raw=true)
+
 
 INTRODUCTION
 As a competent mobile application developer, your understanding of mobile application structure and design will help you to develop applications to meet customer requirements.
