@@ -1,4 +1,5 @@
-![Image 1](https://github.com/DaSigma/WGUCourseTracker/blob/master/Terms%20View.jpg?raw=true) ![Image 1](https://github.com/DaSigma/WGUCourseTracker/blob/master/Term%20View.jpg?raw=true) ![Image 1](https://github.com/DaSigma/WGUCourseTracker/blob/master/Add%20Term.jpg?raw=true) ![Image 1](https://github.com/DaSigma/WGUCourseTracker/blob/master/Terms%20View.jpg?raw=true)
+![Image 1](https://github.com/DaSigma/WGUCourseTracker/blob/master/Terms%20View.jpg?raw=true) ![Image 1](https://github.com/DaSigma/WGUCourseTracker/blob/master/Term%20View.jpg?raw=true) ![Image 1](https://github.com/DaSigma/WGUCourseTracker/blob/master/Add%20Term.jpg?raw=true) 
+![Image 1](https://github.com/DaSigma/WGUCourseTracker/blob/master/Terms%20View.jpg?raw=true)
 
 INTRODUCTION
 As a competent mobile application developer, your understanding of mobile application structure and design will help you to develop applications to meet customer requirements.
