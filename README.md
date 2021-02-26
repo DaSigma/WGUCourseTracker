@@ -1,6 +1,7 @@
 # Course Tracker iOS/Android
 ScreenShots Below
-*Code needs refactoring
+
+Code needs refactoring
 
 
 INTRODUCTION
