@@ -1,7 +1,7 @@
 # Course Tracker iOS/Android
 ScreenShots Below
 
-Code needs refactoring
+Code could be more organized. Project was done to complete assigmanet quickle. Code needs refactoring as time permits.
 
 
 INTRODUCTION
