@@ -1,3 +1,5 @@
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+
 INTRODUCTION
 As a competent mobile application developer, your understanding of mobile application structure and design will help you to develop applications to meet customer requirements.
 
