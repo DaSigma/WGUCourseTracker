@@ -1,4 +1,5 @@
-![Image 1](https://github.com/dasigma/WGUCourseTracker/blob/master/Terms View.jpg ?raw=true) ![Image 1](https://github.com/dasigma/WGUCourseTracker/blob/master/Term View.jpg?raw=true)
+![Image 1](https://github.com/dasigma/WGUCourseTracker/blob/master/Terms View.jpg?raw=true) 
+![Image 1](https://github.com/dasigma/WGUCourseTracker/blob/master/Term View.jpg?raw=true)
 
 
 INTRODUCTION
