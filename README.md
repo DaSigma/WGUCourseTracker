@@ -1,10 +1,7 @@
 # Course Tracker iOS/Android
 ScreenShots Below. 
 
-Code left as is for now due to time. Please feel free to contact me for a code review to see what I should have and plan to do different based on my continued learning.
-
-Code could be more organized. Project was done to complete assigmanet quickle. Code needs refactoring as time permits.
-
+Project was done to complete assigmanet quickly. Code left as is for now due to time. Please feel free to contact me for a code review to see what I should have and plan to do different based on my continued learning.
 
 INTRODUCTION
 As a competent mobile application developer, your understanding of mobile application structure and design will help you to develop applications to meet customer requirements.
