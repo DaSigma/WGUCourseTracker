@@ -1,5 +1,6 @@
 # Course Tracker iOS/Android
 ScreenShots Below
+Code left as is for now due to time. Please feel free to contact me for a code review to see what I should have and plan to do different based on my continued learning.
 
 Code could be more organized. Project was done to complete assigmanet quickle. Code needs refactoring as time permits.
 
