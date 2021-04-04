@@ -3,6 +3,8 @@ ScreenShots Below.
 
 Project was done to complete assigmanet quickly. Code left as is for now due to time. Please feel free to contact me for a code review to see what I should have and plan to do different based on my continued learning.
 
+![Image 1](https://github.com/DaSigma/WGUCourseTracker/blob/master/Terms%20View.jpg?raw=true) ![Image 1](https://github.com/DaSigma/WGUCourseTracker/blob/master/Term%20View.jpg?raw=true)
+
 INTRODUCTION
 As a competent mobile application developer, your understanding of mobile application structure and design will help you to develop applications to meet customer requirements.
 
